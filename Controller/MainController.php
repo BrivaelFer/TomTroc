@@ -25,17 +25,21 @@ class MainController{
         }
 
         $authorRepository = new AuthorRepository();
-        $bookAuthors = [];
+        $userRepository = new UserRepository();
+        $booksInfos = [];
         foreach($books as $book)
         {
-            $bookAuthors[$book->getId()] = $authorRepository->findAuthorByBookId($book->getId());
+            $booksInfos[$book->getId()] = [
+                'authors'=> $authorRepository->findAuthorByBookId($book->getId()),
+                'user' => $userRepository->findUserById($book->getUsrId())
+            ];
 
         }
 
         $view = new View("Nos livres");
         $view->render(TEMPLATE_VIEW_PATH . 'ourBooks.php',[
             'books' => $books,
-            'authors' => $bookAuthors
+            'infos' => $booksInfos
         ]);
     }
 }

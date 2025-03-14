@@ -1,3 +1,6 @@
+<?php 
+$user = $_SESSION['user'] ?? null;
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,13 +15,25 @@
             <h1>Tom Troc</h1>
         </div>
             <ul>
-                <li><a href="./"><span>Accueil</span></a></li>
-                <li><a href=""><span>Nos livres à l'échange</span></a></li>
+                <li><a href="index.php"><span>Accueil</span></a></li>
+                <li><a href="index.php?page=books"><span>Nos livres à l'échange</span></a></li>
             </ul>
             <ul>
-                <li><a href="./"><span class="message-icon count-icon">Messagerie</span></a></li>
-                <li><a href="./"><span>Mon compte</span></a></li>
-                <li><a href="./"><span>Connexion</span></a></li>
+            <?php
+            if($user){
+                ?>
+                    <li><a href="index.php?page=messages"><span class="message-icon count-icon">Messagerie</span></a></li>
+                    <li><a href="index.php?page=account"><span>Mon compte</span></a></li>
+                    <li><a href="index.php?page=logout"><span>Déconnexion</span></a></li>
+                <?php
+            }
+            else{
+                ?>
+                <li><a href="index.php?page=loginPage">Connexion</a></li>
+                <li><a href="index.php?page=signup">Inscription</a></li>
+                <?php
+            }
+            ?>
             </ul>
         </div>
     </header>

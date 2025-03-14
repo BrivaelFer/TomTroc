@@ -31,4 +31,9 @@ class Author extends AbstractEntity
     public function setPseudo(string $pseudo): void {
         $this->pseudo = $pseudo;
     }
+
+    public function getPseudoOrName(): string
+    {
+        return $this->pseudo ?? ($this->firstName . ' ' . $this->name);
+    }
 }

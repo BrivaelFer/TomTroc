@@ -8,6 +8,7 @@ final class Book extends AbstractEntity
     private string $summary;
     private bool $dispo;
     private ?string $img;
+    private array $authors = null;
 
     public function getUsrId(): int 
     {
@@ -59,5 +60,23 @@ final class Book extends AbstractEntity
         $this->img = $img;
     
     }
-    
+
+    public function setAuthors(): void
+    {
+        $authorRepository = new AuthorRepository();
+        $this->authors = $authorRepository->findAuthorByBookId($this->getId());
+    }
+    public function addAuthor(Author $author): void
+    {
+        $this->authors[] = $author;
+    }
+    public function getAuthorsNames(): string
+    {
+        $names = [];
+        foreach($this->authors as $author)
+        {
+            $names[] = $author->getPseudoOrName();
+        }
+        return implode(", ", $names);
+    }
 }

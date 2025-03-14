@@ -5,7 +5,7 @@ final class User extends AbstractEntity
     private string $email;
     private string $password;
     private string $name;
-    private string $usrImg;
+    private ?string $usrImg;
     private DateTime $creationDate;
 
     public function getEmail(): string 
@@ -38,12 +38,12 @@ final class User extends AbstractEntity
         $this->name = $name;
     }
 
-    public function getUsrImg(): string 
+    public function getUsrImg(): string|null 
     {
         return $this->usrImg;
     }
 
-    public function setUsrImg(string $usrImg): void 
+    public function setUsrImg(?string $usrImg): void 
     {
         $this->usrImg = $usrImg;
     }

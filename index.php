@@ -15,6 +15,53 @@ try {
         case 'books':
             $mainController = new MainController();
             $mainController->ourBooks();
+            break;
+        case 'loginPage':
+            $userController = new UserController();
+            $userController->loginPage();
+            break;
+        case 'login':
+            $userController = new UserController();
+            $userController->login();
+            break;
+        case 'signup':
+            $userController = new UserController();
+            $userController->signupPage();
+            break;
+        case 'createAccount':
+            $userController = new UserController();
+            $userController->createAccount();
+            break;
+        case 'logout':
+            $userController = new UserController();
+            $userController->logout();
+            break;
+        case 'account':
+            $userController = new UserController();
+            $userController->account();
+            break;
+        case 'profil':
+            $userController = new UserController();
+            break;
+        case 'message':
+            $userController = new UserController();
+            break;
+        case 'bookDetail':
+            $bookController = new BookController();
+            $bookController->bookDetails();
+            break;
+        case 'editBook':
+            $bookController = new BookController();
+            $bookController->editBook();
+            break;
+        case 'createBook':
+            $bookController = new BookController();
+            $bookController->createBook();
+            break;
+        case 'delBook':
+            $bookController = new BookController();
+            $bookController->delBook();
+            break;
         default;
             throw new Exception("La page demandée n'existe pas.", 404);
     }

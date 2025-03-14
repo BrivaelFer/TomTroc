@@ -31,8 +31,8 @@ spl_autoload_register(function($className) {
         require_once 'Repository/'. $className .'.php';
     }
 
-    if (file_exists('sevices/'. $className .'.php')){
-        require_once 'Repository/'. $className .'.php';
+    if (file_exists('services/'. $className .'.php')){
+        require_once 'services/'. $className .'.php';
     }
     
 });

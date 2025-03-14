@@ -31,4 +31,17 @@ final class BookRepository extends AbstractRepository
         }
         return $books;
     }
+    public function findBooksByUser(int $userId): array
+    {
+        $sql = "SELECT * FROM book WHERE usr_id = :userId";
+        
+        $query = $this->connection->prepare($sql);
+        $query->execute(['userId' => $userId]);
+       
+        foreach($query->fetchAll() as $book)
+        {
+            $books[] = new Book($book);
+        }
+        return $books;
+    }
 }
