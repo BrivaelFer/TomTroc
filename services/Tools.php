@@ -21,8 +21,6 @@ final class Tools
     }
     public static function comparePassword(string $unhashed, string $hashed): bool
     {
-        $t1 = static::hash($unhashed);
-        $t2 = static::hash($unhashed) == $hashed;
         return static::hash($unhashed) === $hashed;
     }
 }

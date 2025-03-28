@@ -49,4 +49,8 @@ class AbstractRepository
         }
         return $res;
     }
+    protected function generatLimitQuery(int $limit): string
+    {
+        return $limit >= 0 ? " LIMIT $limit" : "";
+    }
 }

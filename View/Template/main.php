@@ -7,44 +7,50 @@ $user = $_SESSION['user'] ?? null;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title; ?></title>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
+    <link rel="stylesheet" href="./Asset/css/main.css">
 </head>
-<body>
-    <header>
-        <div>
-            <img src="" alt="logo Tom Troc">
-            <h1>Tom Troc</h1>
-        </div>
-            <ul>
-                <li><a href="index.php"><span>Accueil</span></a></li>
-                <li><a href="index.php?page=books"><span>Nos livres à l'échange</span></a></li>
-            </ul>
-            <ul>
-            <?php
-            if($user){
-                ?>
-                    <li><a href="index.php?page=messages"><span class="message-icon count-icon">Messagerie</span></a></li>
-                    <li><a href="index.php?page=account"><span>Mon compte</span></a></li>
-                    <li><a href="index.php?page=logout"><span>Déconnexion</span></a></li>
+<body class="background-2">
+    <header class="background-1">
+        <nav>
+            <div class="main-logo">
+                <img src="./Asset/img/logoTomTroc.png" alt="logo Tom Troc">
+            </div>
+            <div class="main-menus">
+                <div class="princ-menu">
+                    <div><a href="index.php"><span>Accueil</span></a></div>
+                    <div><a href="index.php?page=books"><span>Nos livres à l'échange</span></a></div>
+                </div>
+                <div class="account-menu">
                 <?php
-            }
-            else{
+                if($user){
+                    ?>
+                        <div><a class="message-link" href="index.php?page=messages"><span class="message-icon count-icon">Messagerie</span></a></div>
+                        <div><a class="account-link" href="index.php?page=account"><span>Mon compte</span></a></div>
+                        <div><a href="index.php?page=logout"><span>Déconnexion</span></a></div>
+                    <?php
+                }
+                else{
+                    ?>
+                    <div><a href="index.php?page=loginPage">Connexion</a></div>
+                    <div><a href="index.php?page=signup">Inscription</a></div>
+                    <?php
+                }
                 ?>
-                <li><a href="index.php?page=loginPage">Connexion</a></li>
-                <li><a href="index.php?page=signup">Inscription</a></li>
-                <?php
-            }
-            ?>
-            </ul>
-        </div>
+                </div>
+            </div>
+        </nav>
     </header>
     <main>
         <?= $content ?>
     </main>
-    <footer>
+    <footer class="main-footer background-3">
         <a href="">Politique de confidentialité</a>
         <a href="">Mentions légales</a>
         <a href="">Tom Troc©</a>
-        <img src="" alt="logo Tom Troc reverse">
+        <img class="logo-footer" src="./Asset/img/logoTomTrocRev.png" alt="logo Tom Troc reverse">
     </footer>
 </body>
 </html>

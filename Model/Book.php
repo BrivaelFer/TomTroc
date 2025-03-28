@@ -8,7 +8,7 @@ final class Book extends AbstractEntity
     private string $summary;
     private bool $dispo;
     private ?string $img;
-    private array $authors = null;
+    private ?array $authors = null;
 
     public function getUsrId(): int 
     {

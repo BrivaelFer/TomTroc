@@ -15,6 +15,10 @@ final class BookRepository extends AbstractRepository
         {
             $sql .= $this->generatOrderQuery($params['orders']);
         }
+        if(isset($params['limit']))
+        {
+            $sql .= $this->generatLimitQuery($params['limit']);
+        }
 
         $query = $this->connection->prepare($sql);
 
