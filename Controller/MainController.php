@@ -6,14 +6,11 @@ class MainController{
         $bookRepository = new BookRepository();
 
         $books = $bookRepository->findAllBooks(['orders' => ['id'=> -1], 'limit' => 4]);
-
-        $authorRepository = new AuthorRepository();
         $userRepository = new UserRepository();
         $booksInfos = [];
         foreach($books as $book)
         {
             $booksInfos[$book->getId()] = [
-                'authors'=> $authorRepository->findAuthorByBookId($book->getId()),
                 'user' => $userRepository->findUserById($book->getUsrId())
             ];
 
@@ -42,14 +39,11 @@ class MainController{
         {
             $books = $bookRepository->findAllBooks();
         }
-
-        $authorRepository = new AuthorRepository();
         $userRepository = new UserRepository();
         $booksInfos = [];
         foreach($books as $book)
         {
             $booksInfos[$book->getId()] = [
-                'authors'=> $authorRepository->findAuthorByBookId($book->getId()),
                 'user' => $userRepository->findUserById($book->getUsrId())
             ];
 

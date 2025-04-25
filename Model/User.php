@@ -57,4 +57,19 @@ final class User extends AbstractEntity
     {
         $this->creationDate = new DateTime($creationDate);
     }
+    public function getAccountAge(): string
+    {
+        $currentDate = new DateTime();
+        $diff = $this->creationDate->diff($currentDate);
+        
+        if ($diff->y > 0) {
+            return $diff->y . " an" . ($diff->y > 1 ? "s" : "");
+        } elseif ($diff->m > 0) {
+            return $diff->m . " mois";
+        } elseif ($diff->d > 0) {
+            return $diff->d . " jour" . ($diff->d > 1 ? "s" : "");
+        } else {
+            return "aujourd'hui";
+        }
+    }
 }

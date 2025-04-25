@@ -1,5 +1,8 @@
 <?php 
 $user = $_SESSION['user'] ?? null;
+if ($user) $user = unserialize($user);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -11,6 +14,8 @@ $user = $_SESSION['user'] ?? null;
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
     <link rel="stylesheet" href="./Asset/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body class="background-2">
     <header class="background-1">
@@ -53,4 +58,5 @@ $user = $_SESSION['user'] ?? null;
         <img class="logo-footer" src="./Asset/img/logoTomTrocRev.png" alt="logo Tom Troc reverse">
     </footer>
 </body>
+<script src="Asset/js/account.js"></script>
 </html>

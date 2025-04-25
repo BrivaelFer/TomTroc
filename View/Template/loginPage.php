@@ -4,7 +4,7 @@ $cible = Tools::request('cible', null);
 $fail = Tools::request('fail', false);
 ?>
 
-<section class="login-container">
+<section class="form-container">
     <form action="index.php?page=login<?= $cible ? '&cible='.$cible:'' ?>" method="post">
        <h2>Connexion</h2>
        <?php

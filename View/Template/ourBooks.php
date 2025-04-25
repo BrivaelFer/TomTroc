@@ -18,16 +18,7 @@
                 <div class="book-info">
                     <div>
                         <h3><?= $book->getTitle()?></h3>
-                        <span>
-                            <?php 
-                            $a = [];
-                            foreach($infos[$book->getId()]['authors'] as $author) 
-                            {
-                                $a[] = ($author->getPseudo()?? $author->getFirstName(). " " . $author->getName());
-                            }
-                            echo implode(',', $a);
-                            ?>
-                        </span>
+                        <span><?= $book->getAuthor() ?></span>
                     </div>
                     <span>Vendu par:<?= $infos[$book->getId()]['user']->getName() ?></span>
                 </div>

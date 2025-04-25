@@ -27,9 +27,7 @@ function sharPw(string $pw): string
 $conn = connect();
 $listTables = [
     "message",
-    "book_author",
     "book",
-    "author",
     "usr"
 ];
 foreach($listTables as $table){
@@ -42,7 +40,7 @@ foreach($listTables as $table){
 for($i = 0; $i < 7; $i++)
 {
     $name = generateLoremIpsum(1) . $i;
-    $email = $name . "@" . generateLoremIpsum(1) . ".com";
+    $email = strtolower($name . "@" . generateLoremIpsum(1) . ".com");
     $pw = sharPw("pass" . $i);
     $img = null;
     $q = $conn->prepare("INSERT INTO usr (email, `password`, `name`) VALUE ('$email','$pw','$name')");
@@ -56,23 +54,12 @@ for($i = 0; $i < 20; $i++)
     $message = generateLoremIpsum(random_int(5,200));
     $conn->prepare("INSERT INTO `message` (writer_id, reader_id, content) VALUE ($u1 , $u2 ,'$message')")->execute(); 
 }
-for($i = 0; $i < 10; $i++)
-{
-    $pn = generateLoremIpsum(1);
-    $n = generateLoremIpsum(1);
-    $pseudo = generateLoremIpsum(random_int(1,20));
-    $conn->prepare("INSERT INTO author (first_name, name, pseudo) VALUE ('$pn','$n','$pseudo')")->execute();
-}
 for($i = 0; $i < 30; $i++)
 {
     $u = random_int(1,7);
     $t = generateLoremIpsum(random_int(1,20));
     $summ = generateLoremIpsum(random_int(100, 600));
     $dis = random_int(0,1);
-    $conn->prepare("INSERT INTO book (usr_id,title,summary,dispo) VALUE ($u,'$t','$summ',$dis)")->execute();
-}
-for($i = 1; $i <= 30;$i++)
-{
-    $aut = random_int(1, 10);
-    $conn->prepare("INSERT INTO book_author (author_id, book_id) VALUE ($aut,$i)")->execute();
+    $author = generateLoremIpsum(random_int(1,20));
+    $conn->prepare("INSERT INTO book (usr_id,title,summary,dispo,author) VALUE ($u,'$t','$summ',$dis,'$author')")->execute();
 }

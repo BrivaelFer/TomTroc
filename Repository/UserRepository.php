@@ -26,6 +26,42 @@ class UserRepository extends AbstractRepository
 
         return $this->connection->lastInsertId();
     }
+    public function updateUser(User $user, bool $skipPw = false): void
+    {
+        $sql = "UPDATE usr SET ";
+
+        $oldUser = $this->findUserById($user->getId());
+        $execVals = [];
+        $execVals['id'] = $user->getId();
+        $valSql = [];
+        if ($oldUser->getName() != $user->getName()) {
+            $valSql[] = "name = :name";
+            $execVals['name'] = $user->getName();
+        }
+        
+        if (!$skipPw && !Tools::comparePassword($user->getPassword(), $oldUser->getPassword())) {
+            $valSql[] = "password = :password";
+            $execVals['password'] = Tools::hash($user->getPassword());
+        }
+        
+        if ($oldUser->getEmail() != $user->getEmail()) {
+            $valSql[] = "email = :email";
+            $execVals['email'] = $user->getEmail();
+        }
+        
+        if ($oldUser->getUsrImg() != $user->getUsrImg()) {
+            $valSql[] = "usr_img = :usr_img";
+            $execVals['usr_img'] = $user->getUsrImg();
+        }
+        if(count($valSql) > 0)
+        {
+            $sql .= implode(", ", $valSql) . ' WHERE id = :id';
+        
+            $query = $this->connection->prepare($sql);
+            $query->execute($execVals);
+        }
+        
+    }
     public function findUserByEmail(string $email): ?User
     {
         $sql = "SELECT * FROM usr WHERE email = :email";

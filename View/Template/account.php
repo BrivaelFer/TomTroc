@@ -1,18 +1,48 @@
-<section>
-    <form action="index.php?page=createAccount" method="post">
-        <!-- gestion img -->
-        <label for="name">Pseudo</label>
-        <input type="text" name="name" id="name">
-        <label for="email">Adresse email</label>
-        <input type="text" name="email" id="email">
-        <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="pw">
-        <input type="submit" value="Se connecter">
-    </form>
+<h2 class="margin-account">Mon compte</h2>
+<section id="user-infos" class="margin-account">
+    <div class="background-3 card">
+        <div class="bottom-separator">
+            <img class="full-profil-img" src="<?= $user->getUsrImg() ?? 'Asset/img/user/user-default.jpg' ?>" alt="">
+            <p id="img_modif_show">modifier</p>
+            <form id="img_form" class="hidded" action="index.php?page=editImg" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="type" id="type" value="user">
+                <input type="file" name="user_img" id="user_img" accept="image/*" required>
+                <input type="submit" value="valider">
+            </form>
+        </div>
+        <div>
+            <div>
+                <h3><?= $user->getName() ?></h3>
+                <p>Membre depuis <?= $user->getAccountAge() ?></p>
+            </div>
+            <div>
+                <h4>BIBLIOTHEQUE</h4>
+                <span class="book-count"><?= count($books) ?> livres</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-container account-form background-3 card text-left">
+        <form action="index.php?page=editAccount" method="post">
+            <h3>Vos informations personnelles</h3>
+            <div class="input-container">
+                <label for="email">Adresse email</label>
+                <input type="text" name="email" id="email" value="<?= $user->getEmail()?>" autocomplete="off">
+            </div>
+            <div class="input-container">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="pw" autocomplete="new-password">
+            </div>
+            <div class="input-container">
+                <label for="name">Pseudo</label>
+                <input type="text" name="name" id="name" value="<?= $user->getName()?>"S>
+            </div>
+            <input class="button" type="submit" value="Enregistrer">
+        </form>
+    </div>
 </section>
-<section>
+<section class="user-books-list background-3 card margin-account">
     <table>
-        <thead>
+        <thead class="text-left bottom-separator">
             <tr>
                 <th>PHOTO</th>
                 <th>TITRE</th>
@@ -26,30 +56,29 @@
         <?php 
         foreach($books as $book)
         {
-            $book->setAuthors();
             ?>
             <tr>
-                <td><img src="<?= $book->getImg() ?>" alt=""></td>
+                <td><img src="<?= $book->getImg() ?? "Asset/img/default.png" ?>" alt=""></td>
                 <td><?= $book->getTitle() ?></td>
-                <td><?= $book->getAuthorsNames() ?></td>
-                <td><?= $book->getSummary() ?></td>
+                <td><?= $book->getAuthor() ?></td>
+                <td><?= substr($book->getSummary(), 0, 100) . '...' ?></td>
                 <td>
                     <?php 
-                    if($book->getDispo()) { 
+                    if($book->isDispo()) { 
                         ?>
-                        <span class="">Disponible</span> 
+                        <span class="book-dis">Disponible</span> 
                         <?php 
                     }
                     else { 
                         ?>
-                        <span class="">Indisponible</span> 
+                        <span class="book-undis">Indisponible</span> 
                         <?php 
                     }
                     ?>
                 </td>
-                <td>
-                    <a href="index.php?page=editeBook&book=<?= $book->getId ?>">Editer</a>
-                    <a href="index.php?page=delBook&book=<?= $book->getId ?>">Supprimer</a>
+                <td class="book-links">
+                    <a class="black_link" href="index.php?page=editBook&book=<?= $book->getId() ?>">Editer</a>
+                    <a class="red_link" href="index.php?page=delBook&book=<?= $book->getId() ?>">Supprimer</a>
                 </td>
             </tr>
             <?php

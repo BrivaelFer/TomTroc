@@ -1,8 +1,8 @@
 <section class="background-1" id="intro-home">
     <div class="home-text">
         <h2>Rejoignez nos lecteurs passionnés </h2>
-        <p class="before-button">Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
-        <a class="button-green" href="">Découvrir</a>
+        <p >Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
+        <a class="button-green" style="width: 152px" href="">Découvrir</a>
     </div>
     <div>
         <img src="Asset/img/illu_intro.jpg" alt="">
@@ -11,7 +11,7 @@
 </section>
 <section id="ourbooks-home">
     <h2 class="text-center">Les derniers livres ajoutés</h2>
-    <div class="books-grid before-button">
+    <div class="books-grid">
         <?php
         foreach($books as $book)
         {
@@ -21,16 +21,7 @@
                 <div class="book-info">
                     <div>
                         <h3><?= $book->getTitle()?></h3>
-                        <span>
-                            <?php 
-                            $a = [];
-                            foreach($infos[$book->getId()]['authors'] as $author) 
-                            {
-                                $a[] = ($author->getPseudo()?? $author->getFirstName(). " " . $author->getName());
-                            }
-                            echo implode(',', $a);
-                            ?>
-                        </span>
+                        <span><?= $book->getAuthor() ?></span>
                     </div>
                     <span>Vendu par:<?= $infos[$book->getId()]['user']->getName() ?></span>
                 </div>
@@ -39,12 +30,12 @@
         }
         ?>
     </div>
-    <a class="button-green" href="index.php?page=books">Voir tous les livres</a>
+    <a class="button-green" style="width: 218px" href="index.php?page=books">Voir tous les livres</a>
 </section>
 <section class="background-1 text-center" id="mcm-home" >
     <h2>Comment ça marche ?</h2>
     <p>Échanger des livres avec TomTroc c'est simple et amusant ! Suivez ces étapes pour commencer :</p>
-    <div class="mcm-grid before-button">
+    <div class="mcm-grid">
         <article class="background-3">
             <p>Inscrivez-vous gratuitement sur notre plateforme.</p>
         </article>
@@ -58,7 +49,7 @@
             <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
         </article>
     </div>
-    <a class="button" href="index.php?page=books">Voir tous les livres</a>
+    <a class="button" style="width: 218px" href="index.php?page=books">Voir tous les livres</a>
 </section>
 <section class="background-1 text-center" id="valeurs-home">
     <img class="img-band" src="Asset/img/bande.png" alt="">

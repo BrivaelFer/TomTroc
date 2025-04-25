@@ -5,7 +5,7 @@ require_once 'config/autoload.php';
 
 $page = Tools::request('page', 'home');
 
-try {
+// try {
     switch($page)
     {
         case 'home':
@@ -40,6 +40,13 @@ try {
             $userController = new UserController();
             $userController->account();
             break;
+        case 'editAccount':
+            $userController = new UserController();
+            $userController->editAccount();
+            break;
+        case 'editImg':
+            $userController = new UserController();
+            $userController->editImg();
         case 'profil':
             $userController = new UserController();
             break;
@@ -65,7 +72,7 @@ try {
         default;
             throw new Exception("La page demandée n'existe pas.", 404);
     }
-} catch (Exception $e) {
-    $errorView = new View('Erreur');
-    $errorView->render('errorPage', ['errorMessage' => $e->getMessage(), 'code' => $e->getCode()]);
-}
+// } catch (Exception $e) {
+//     $errorView = new View('Erreur');
+//     $errorView->render('errorPage', ['errorMessage' => $e->getMessage(), 'code' => $e->getCode()]);
+// }

@@ -1,4 +1,4 @@
-<section class="login-container">
+<section class="form-container">
     <form action="index.php?page=createAccount" method="post">
         <h2>Inscription</h2>
         <div class="input-container">

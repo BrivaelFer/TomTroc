@@ -51,7 +51,7 @@ class UserController
         elseif($id){
             $userRepository = new UserRepository();
             $usr = $userRepository->findUserById($id);
-            $_SESSION['user'] = $usr;
+            $_SESSION['user'] = serialize($usr);
             Tools::redirect('home');
         }
         else
@@ -60,7 +60,7 @@ class UserController
             $usr = $userRepository->findUserByEmail($email);
             if ($usr && Tools::comparePassword($pw, $usr->getPassword())) 
             {
-                $_SESSION['user'] = $usr;
+                $_SESSION['user'] = serialize($usr);
                 Tools::redirect($cible ?? 'home');
             }
             else
@@ -74,18 +74,94 @@ class UserController
         unset($_SESSION['user']);
         Tools::redirect($page);
     }
-    public function account(){
+    public function account()
+    {
         $user = $_SESSION['user'] ?? null;
         if ($user) {
+            $user = unserialize($user);
             $bookRepository = new BookRepository();
             $usrBooks = $bookRepository->findBooksByUser($user->getId());
 
             $veiw = new View('Compte');
             $veiw->render(TEMPLATE_VIEW_PATH . 'account.php', [
-                'books' => $usrBooks
+                'books' => $usrBooks,
+                'user' => $user
             ]);
         }
         else Tools::redirect('loginPage', ['cible' => 'account']);
+    }
+    public function editAccount(): void
+    {
+        $user = $_SESSION['user'];
+        if ($user)
+        {
+            $user = unserialize($user);
+
+            $name = $_POST['name'] ?? null;
+            $pw = $_POST['password'] ?? null;
+            $email = $_POST['email'] ?? null;
+
+            if(!empty(trim($name))) $user->setName($name);
+            if(!empty(trim($email))) $user->setEmail($email);
+
+            $userRepository = new UserRepository();
+
+            if(!empty(trim($pw))) { 
+                $user->setPassword($pw);
+                $userRepository->updateUser($user);
+            }
+            else $userRepository->updateUser($user, true);
+            
+            $_SESSION['user'] = serialize($userRepository->findUserById($user->getId()));
+
+            Tools::redirect('account');
+        }
+        else Tools::redirect('home');
+    }
+    public function editImg(): void
+    {
+        $user = $_SESSION['user'] ?? null;
+
+        if($user)
+        {
+            $user = unserialize($user);
+            $typeImg = $_POST['type'];
+            $redirect = 'account';
+            $param = [];
+            $file = $_FILES[$typeImg.'_img'];
+            if(!in_array($typeImg, ['user', 'book']))
+            {
+                Tools::redirect('account');
+            }
+            elseif($typeImg == 'book'){
+                $bookId = $_POST['bookId'];
+                $redirect = 'editBook';
+                $param['book'] = $bookId;
+            }
+            $imgName = ($typeImg. ($bookId ?? "") . "_" . $user->getId());
+            $path = Tools::uploadImg($file, $imgName, $typeImg);
+            if($typeImg == 'user'){
+                if($path != $user->getUsrImg())
+                {
+                    $user->setUsrImg($path);
+    
+                    $userRepositry = new UserRepository();
+                    $userRepositry->updateUser($user, true);
+    
+                    $user = $userRepositry->findUserById($user->getId());
+                    $_SESSION['user'] = serialize($user);
+                }
+            }
+            elseif($typeImg == 'book'){
+                $bookRepo = new BookRepository();
+                $book = $bookRepo->findBookById($bookId);
+                $book->setImg($path);
+                $bookRepo->updateBook($book);
+            }
+           
+            Tools::redirect($redirect, $param);
+        }
+        Tools::redirect('account');
     }
     public function profil(): void
     {
@@ -94,7 +170,7 @@ class UserController
         // {
 
         // }
-        // else 
+        // else R
     }
     public function message(): void
     {

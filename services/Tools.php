@@ -23,4 +23,19 @@ final class Tools
     {
         return static::hash($unhashed) === $hashed;
     }
+    public static function uploadImg(array $file, string $name, string $dir): string|bool
+    {
+        try {
+            $ext = strtolower(pathinfo($file["name"], PATHINFO_EXTENSION));
+            if(!in_array($ext, ['jpg', 'jpeg', 'png']) || $file['size'] > 10 * 1024 * 1024 )
+            {
+                return false;
+            }
+            $path = "Asset/img/$dir/$name.$ext";
+            move_uploaded_file($file["tmp_name"], $path);
+            return $path;
+        } catch (Exception $exception) {
+            return false;
+        }
+    }
 }
