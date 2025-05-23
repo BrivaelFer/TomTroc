@@ -12,6 +12,7 @@
     --table-blue: #EDF2F6;
     --grey: #F5F3EF;
     --form-cont-img-width: 50%;
+    --button-size: 100px;
 }
 html {
     font-family: var(--font-inter);
@@ -19,8 +20,20 @@ html {
 body {
     margin: 0;
     padding: 0;
+    min-height: 100lvh;
+    display: flex;
+    flex-direction: column;
 }
-
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+main > section {
+    flex-grow: 1;
+    padding: 0 20px;
+    overflow: hidden;
+}
 nav {
     display: flex;
     flex-direction: row;
@@ -28,7 +41,9 @@ nav {
     align-items: center;
     justify-content: space-around;
     height: 80px;
-    width: 100%;
+    max-width: 1140px;
+    padding: 0 20px;
+    margin: auto;
 }
 nav > * {
     flex-grow: 1;
@@ -36,9 +51,6 @@ nav > * {
 nav a {
     color: #000;
     text-decoration: none;
-}
-nav a:hover {
-    font-weight: 600;
 }
 h2 {
     font-family: var(--font-playfair-display);
@@ -79,6 +91,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
 }
 .sign {
     color: var(--gray-text);
@@ -93,6 +106,12 @@ h2 {
 }
 .item-end {
     align-self: end;
+}
+.flex-start {
+    justify-self: start;
+}
+.flex-end {
+    
 }
 .text-center {
     text-align: center;
@@ -109,6 +128,9 @@ h2 {
 .bottom-separator {
     border-bottom: 1px solid var(--grey);
 }
+.gray-border {
+    border-color: var(--gray-text);
+}
 [class^=button] {
     padding: 22px 0;
     border-radius: 10px;
@@ -120,15 +142,15 @@ h2 {
     text-decoration: none;
     text-align: center;
     display: inline-block;
+    width: var(--button-size);
 }
 .button-green {
     background: var(--green);
     color: #fff;
 }
-[class^=button]:hover {
-    color: #fff;
-    background-color: var(--dark-green);
-    border-color: var(--dark-green);
+
+.button-full {
+    width: 100%;
 }
 .flex-around {
     display: flex;
@@ -139,24 +161,25 @@ h2 {
     margin: 50px 100px;
 }
 .full-profil-img {
-    width: 48px;
-    height: 48px;
-    border-radius: 24px;
-}
-.little-profil-img {
     width: 135px;
     height: 135px;
     border-radius: 67.5px;
+}
+.medium-profil-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px; 
+}
+.little-profil-img {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
 }
 .main-menus {
     flex-grow: 4;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-}
-.main-logo {
-    display: flex;
-    justify-content: center;
 }
 .main-logo img {
     width: 155px;
@@ -166,10 +189,6 @@ h2 {
     width: 22px;
     height: 17px;
 }
-.princ-menu, .account-menu {
-    display: flex;
-    justify-content: space-evenly;
-}
 [class$="-menu"] a {
     padding: 10px;
 }
@@ -178,9 +197,11 @@ h2 {
     display: flex;
     justify-content: end;
     align-items: center;
+    column-gap: 20px;
+    padding: 0 30px;
 }
 .main-footer > * {
-    margin: 0 10px;
+    margin: 0;
     font-weight: 300;
     color: var(--lighter-dark);
     text-decoration: none;
@@ -242,15 +263,15 @@ h2 {
     padding-left: 35px;
 }
 .books-container {
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.books-container > * {
-    width: 860px;
+.books-container > div {
+    max-width: 924px;
 }
 .books-head {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin:70px 0 50px 0;
@@ -264,16 +285,22 @@ h2 {
 .books-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 38px;
     margin-bottom: 70px;
 }
-.books-grid > article {
+.books-grid > a, .profil-link {
+    all: unset; /* Réinitialise tous les styles par défaut */
+    color: inherit; /* hérite de la couleur du parent */
+    text-decoration: inherit; /* hérite du soulignement ou non */
+}
+  
+.books-grid article {
     max-width: 200px;
     display: flex;
     flex-direction: column;
     border-radius: 10px ;
 }
-.books-grid > article > img {
+.books-grid article > img {
     width: 100%;
     height: 200px;
 }
@@ -308,13 +335,12 @@ h2 {
     color: var(--gray-text);
 }
 .img-band{
-    width: 100%;
+    width: 100lvw;
 }
 .mcm-grid {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(4, 215px);
-    /* margin-top: 20px; */
     margin-bottom: 20px;
 }
 .user-books-list {
@@ -393,13 +419,17 @@ h2 {
 #intro-home {
     display: flex;
     justify-content: center;
+    column-gap: 50px;
 }
 #intro-home div {
-    width: 404px;
 }
 #intro-home .home-text {
-    width: 328px;
-    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#intro-home h2 {
+    margin-top: 0;
 }
 #intro-home .button-green {
     margin-top: 30px;
@@ -423,13 +453,13 @@ h2 {
 }
 #mcm-home article {
     display: flex;
+    justify-content: center;
     align-items: center;
     padding: 20px;
     border-radius: 10px;
     font-size: 14px;
 }
 #valeurs-home {
-    text-align: left;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -440,11 +470,8 @@ h2 {
     position: relative;
     margin-bottom: 50px;
 }
-#valeurs-home > div > img {
-    position: absolute;
-    size: 120px 102px;
-    right: -40px;
-    bottom: -60px;
+#valeurs-home > div > * {
+    text-align: left;
 }
 #valeurs-home .sign {
     margin-top: 50px;
@@ -496,4 +523,346 @@ h2 {
 }
 .v-marged {
     margin: 25px auto  !important;
+}
+
+#messageri {
+    display: flex;
+    justify-content: center;
+}
+#messageri-users {
+    width: 308px;
+}
+.messageri-user {
+    width: 278px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 15px;
+}
+.messageri-user > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.messageri-user > div > div {
+    width: 175px;
+    display: flex;
+    justify-content: space-between;
+}
+.last-message {
+    overflow: hidden;
+    width: 175px;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+}
+
+#messages {
+    flex-grow: 1;
+    max-width: 832px;
+    margin: 25px;
+}
+
+.message-form {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+}
+.message-form .input-container {
+    flex-grow: 1;
+}
+.message-form .button-green {
+    width: 132px;
+}
+.messages-user {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.messages-list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    overflow: auto;
+}
+.message-content {
+    border-radius: 3px;
+    padding: 10px 15px;
+}
+.message-left {
+    margin-right: 50px;
+    align-self: start;
+}
+.message-right {
+    margin-left: 50px;
+    align-self: end;
+}
+.message-left .message-content {
+    background-color: #FFF;
+}
+.message-right .message-content {
+    background-color: var(--table-blue);
+}
+.message-right .message-time {
+    text-align: right;
+}
+#details-book {
+    padding: 0;
+    padding-top: 0.01px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#details-book > p {
+    color: var(--gray-text);
+}
+.path-container {
+    padding: 0 15px;
+    margin: auto;
+    max-width: 1140px;
+}
+.path-nav > a {
+    all: unset; /* Réinitialise tous les styles par défaut */
+    color: inherit; /* hérite de la couleur du parent */
+    text-decoration: inherit; /* hérite du soulignement ou non */
+}
+#details-book > .background-2 {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+}
+#details-book > .background-2 > * {
+    width: 50%;
+}
+.infos-book {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.infos-book > * {
+    max-width: 485px;
+}
+.no-top-margin {
+    margin-top: 0px;
+}
+.message-icon {
+    display: inline-block;
+    width: 15px;
+    height: 13.5px;
+    background-image: url('../img/icon_messagerie.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 3px;
+}
+.account-icon {
+    display: inline-block;
+    width: 15px;
+    height: 13.5px;
+    background-image: url('../img/icon_account.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 3px;
+}
+.book-icon {
+    display: inline-block;
+    width: 15px;
+    height: 13.5px;
+    background-image: url('../img/book_icon.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 3px;
+}
+.big-title {
+    font-family: var(--font-playfair-display);
+}
+.little-title {
+    margin: 10px;
+    font-size: 10px;
+    font-weight: 600;
+}
+.color-gray {
+    color: var(--gray-text);
+}
+.user-i {
+    width: fit-content;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 5px;
+    padding-right: 20px;
+    border-radius: 29px;
+    column-gap: 20px;
+}
+
+#user-profil {
+    padding: 70px;
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+}
+.profil-info {
+    width: 341px;
+}
+#user-profi > .user-books-list {
+    max-width: 771px;
+}
+.path-nav {
+    width: 1140px;
+}
+@media (hover: hover){
+    [class^=button]:hover {
+        color: #fff;
+        background-color: var(--dark-green);
+        border-color: var(--dark-green);
+    }
+    nav a:hover {
+        font-weight: 600;
+    }
+}
+@media (min-width: 941px){
+    
+    .princ-menu, .account-menu {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .card-desk {
+        border-radius: 20px;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: space-around;
+    }
+    .card-desk > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+    }
+    .hidden-desk {
+        display: none;
+    }
+    #intro-home div {
+        width: 404px;
+    }
+    #intro-home .home-text {
+        width: 328px;
+    }
+    #valeurs-home > div > img {
+        position: absolute;
+        size: 120px 102px;
+        right: -40px;
+        bottom: -60px;
+    }
+}
+@media (max-width: 940px){
+    .card-mob {
+        border-radius: 20px;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: space-around;
+    }
+    .card-mob > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+    }
+    .full-mob {
+        width: 100% !important;
+        margin: auto;
+    }
+    #valeurs-home > div > img {
+        margin-top: 35px;
+    }
+    .mcm-grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 100%;
+        margin-bottom: 20px;
+        width: 100%;
+        margin: auto;
+    }
+    .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    .books-grid article {
+        max-width: 160px;
+    }
+    #intro-home {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    #mcm-home article {
+        padding: 20px 0px;
+    }
+    #mcm-home article > p {
+        margin: 14px 20px;
+    }
+    [id$=-home] {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .hidden-mob {
+        display: none !important;
+    }
+    .menu-icon {
+        height: 51px;
+        max-width: 51px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .menu-icon > img {
+        width: 22px;
+        margin: auto;
+    }
+    .main-footer {
+        flex-direction: column;
+        justify-content: center;
+        height: 185px;
+        row-gap: 20px;
+    }
+    .home-text {
+        padding: 0 15px;
+    }
+    .intro-img p{
+        padding-right: 20px;
+    }
+    #intro-home img {
+        width: 100lvw;
+    }
+    .books-head {
+        text-align: left;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    .books-head > * {
+        flex-grow: 1;
+        width: unset;
+        max-width: 350px;
+    }
+    #details-book > div {
+        flex-direction: column;
+    }
+    #details-book > .background-2 > * {
+        width: 100%;
+    }
+    .infos-book {
+        width: calc(100% - 30px) !important;
+        padding: 15px;
+    }
+    .infos-book > div {
+        margin-bottom: 50px;
+    }
+    .infos-book > * {
+        max-width: unset;
+    }
 }

@@ -13,16 +13,19 @@
         foreach($books as $book)
         {
             ?>
-            <article class="background-3">
-                <img src="<?= $book->getImg()?? "Asset/img/default.png" ?>" alt="">
-                <div class="book-info">
-                    <div>
-                        <h3><?= $book->getTitle()?></h3>
-                        <span><?= $book->getAuthor() ?></span>
+            <a href="index.php?page=bookDetail&book=<?= $book->getId() ?>">
+                <article class="background-3">
+                    <img src="<?= $book->getImg()?? "Asset/img/default.png" ?>" alt="">
+                    <div class="book-info">
+                        <div>
+                            <h3><?= $book->getTitle()?></h3>
+                            <span><?= $book->getAuthor() ?></span>
+                        </div>
+                        <span>Vendu par:<?= $infos[$book->getId()]['user']->getName() ?></span>
                     </div>
-                    <span>Vendu par:<?= $infos[$book->getId()]['user']->getName() ?></span>
-                </div>
-            </article>
+                </article>
+            </a>
+            
             <?php
         }
         ?>

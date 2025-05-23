@@ -165,15 +165,101 @@ class UserController
     }
     public function profil(): void
     {
-        // $id = Tools::request('user', null);
-        // if($id)
-        // {
+        $id = Tools::request('user', null);
+        if($id)
+        {
+            $userRepo = new UserRepository();
+            $user = $userRepo->findUserById($id);
+            if($user)
+            {
+                $bookRepo = new BookRepository();
+                $books = $bookRepo->findBooksByUser($id);
 
-        // }
-        // else R
+                $veiw = new View('Profil');
+                $veiw->render(TEMPLATE_VIEW_PATH . 'profil.php',[
+                    'user' => $user,
+                    'books' => $books
+                ]);
+            }
+            else Tools::redirect('home');
+        }
+        else Tools::redirect('home');
     }
     public function message(): void
     {
+        $user = $_SESSION['user'] ?? null;
 
+        if($user) {
+            $user = unserialize($user);
+
+            $id = Tools::request('id', null);
+
+            $messageRepo = new MessageRepository();
+            $userRepo = new UserRepository();
+
+            $messages = $messageRepo->findByUser($user->getId());
+            $messagesUsers = [];
+            foreach($messages as $message)
+            {
+                $otherUserId = ($message->getWriterId() === $user->getId())? $message->getReaderId():$message->getWriterId();
+                $messagesUsers[$otherUserId]['messages'][] = $message;
+            }
+            foreach($messagesUsers as $key=>$values)
+            {
+                $otherUser = $userRepo->findUserById($key);
+                $messagesUsers[$key]['user'] = $otherUser;
+                $lastMessage = end($values['messages']);
+                $messagesUsers[$key]['time'] = $lastMessage->getPublication()->format('d.m');
+                $messagesUsers[$key]['lmContent'] = $lastMessage->getContent();
+            }
+            if($id && !isset($messagesUsers[$id]))
+            {
+                $messagesUsers[$id]['user'] = $userRepo->findUserById($id);
+                $messagesUsers[$id]['messages'] = [];
+            }
+            if(empty($id) || !isset($id))
+            {
+                $id = array_key_first($messagesUsers);
+            }
+
+            $view = new View('Messageri');
+            $view->render(TEMPLATE_VIEW_PATH . 'message.php', [
+                'user' => $user,
+                'messagesUsers' => $messagesUsers,
+                'selected' => $id
+            ]);
+        }
+        else
+        {
+            Tools::redirect('loginPage');
+        }
+    }
+    public function addMessage(){
+        $user = $_SESSION['user'];
+        if($user)
+        {
+            $user = unserialize($user);
+
+            $id = Tools::request('id', null);
+            $content = $_POST['message'];
+            if (empty($id)) {
+                Tools::redirect('message');
+            }
+            elseif(empty($content))
+            {
+                Tools::redirect('message', ['id' => $id]);
+            }
+            else
+            {
+                $userRepo = new UserRepository();
+                $reader = $userRepo->findUserById($id);
+
+                $messageRepo = new MessageRepository();
+                $messageRepo->insertMessage($user->getId(), $reader->getId(), $content);
+
+                Tools::redirect('message', ['id' => $id]);
+            }
+        }
+        else Tools::redirect('loginPage', ['cible' => 'message']);
     }
 }

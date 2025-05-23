@@ -49,9 +49,15 @@ $page = Tools::request('page', 'home');
             $userController->editImg();
         case 'profil':
             $userController = new UserController();
+            $userController->profil();
             break;
         case 'message':
             $userController = new UserController();
+            $userController->message();
+            break;
+        case 'addMessage':
+            $userController = new UserController();
+            $userController->addMessage();
             break;
         case 'bookDetail':
             $bookController = new BookController();

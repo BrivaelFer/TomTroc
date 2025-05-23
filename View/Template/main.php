@@ -23,7 +23,10 @@ if ($user) $user = unserialize($user);
             <div class="main-logo">
                 <img src="./Asset/img/logoTomTroc.png" alt="logo Tom Troc">
             </div>
-            <div class="main-menus">
+            <div class="menu-icon hidden-desk">
+                <img src="Asset/img/icon_menu.svg" alt="menu">
+            </div>
+            <div class="main-menus hidden-mob">
                 <div class="princ-menu">
                     <div><a href="index.php"><span>Accueil</span></a></div>
                     <div><a href="index.php?page=books"><span>Nos livres à l'échange</span></a></div>
@@ -32,8 +35,8 @@ if ($user) $user = unserialize($user);
                 <?php
                 if($user){
                     ?>
-                        <div><a class="message-link" href="index.php?page=messages"><span class="message-icon count-icon">Messagerie</span></a></div>
-                        <div><a class="account-link" href="index.php?page=account"><span>Mon compte</span></a></div>
+                        <div><a class="message-link" href="index.php?page=message"><span><i class="message-icon"></i>Messagerie</span></a></div>
+                        <div><a class="account-link" href="index.php?page=account"><span><i class="account-icon"></i>Mon compte</span></a></div>
                         <div><a href="index.php?page=logout"><span>Déconnexion</span></a></div>
                     <?php
                 }

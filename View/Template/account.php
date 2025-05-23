@@ -1,9 +1,9 @@
 <h2 class="margin-account">Mon compte</h2>
 <section id="user-infos" class="margin-account">
     <div class="background-3 card">
-        <div class="bottom-separator">
+        <div class="bottom-separator" style="max-width:242px;">
             <img class="full-profil-img" src="<?= $user->getUsrImg() ?? 'Asset/img/user/user-default.jpg' ?>" alt="">
-            <p id="img_modif_show">modifier</p>
+            <p id="img_modif_show" class="color-gray">modifier</p>
             <form id="img_form" class="hidded" action="index.php?page=editImg" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="type" id="type" value="user">
                 <input type="file" name="user_img" id="user_img" accept="image/*" required>
@@ -12,12 +12,12 @@
         </div>
         <div>
             <div>
-                <h3><?= $user->getName() ?></h3>
-                <p>Membre depuis <?= $user->getAccountAge() ?></p>
+                <h3 class="big-title"><?= $user->getName() ?></h3>
+                <p class="color-gray">Membre depuis <?= $user->getAccountAge() ?></p>
             </div>
             <div>
-                <h4>BIBLIOTHEQUE</h4>
-                <span class="book-count"><?= count($books) ?> livres</span>
+                <h4 class="little-title">BIBLIOTHEQUE</h4>
+                <span class="book-count"><i class="book-icon"></i><?= count($books) ?> livres</span>
             </div>
         </div>
     </div>

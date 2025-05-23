@@ -2,9 +2,9 @@
     <div class="home-text">
         <h2>Rejoignez nos lecteurs passionnés </h2>
         <p >Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
-        <a class="button-green" style="width: 152px" href="">Découvrir</a>
+        <a class="button-green full-mob" style="--button-size: 152px" href="">Découvrir</a>
     </div>
-    <div>
+    <div class="intro-img">
         <img src="Asset/img/illu_intro.jpg" alt="">
         <p class="sign text-right">Hamza</p>
     </div>
@@ -16,21 +16,23 @@
         foreach($books as $book)
         {
             ?>
-            <article class="background-3">
-                <img src="<?= $book->getImg()?? "Asset/img/default.png" ?>" alt="">
-                <div class="book-info">
-                    <div>
-                        <h3><?= $book->getTitle()?></h3>
-                        <span><?= $book->getAuthor() ?></span>
+            <a href="index.php?page=bookDetail&book=<?= $book->getId() ?>">
+                <article class="background-3">
+                    <img src="<?= $book->getImg()?? "Asset/img/default.png" ?>" alt="">
+                    <div class="book-info">
+                        <div>
+                            <h3><?= $book->getTitle()?></h3>
+                            <span><?= $book->getAuthor() ?></span>
+                        </div>
+                        <span>Vendu par:<?= $infos[$book->getId()]['user']->getName() ?></span>
                     </div>
-                    <span>Vendu par:<?= $infos[$book->getId()]['user']->getName() ?></span>
-                </div>
-            </article>
+                </article>
+            </a>
             <?php
         }
         ?>
     </div>
-    <a class="button-green" style="width: 218px" href="index.php?page=books">Voir tous les livres</a>
+    <a class="button-green hidden-mob" style="width: 218px" href="index.php?page=books">Voir tous les livres</a>
 </section>
 <section class="background-1 text-center" id="mcm-home" >
     <h2>Comment ça marche ?</h2>
@@ -49,10 +51,11 @@
             <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
         </article>
     </div>
-    <a class="button" style="width: 218px" href="index.php?page=books">Voir tous les livres</a>
+    <a class="button full-mob" style="width: 218px" href="index.php?page=books">Voir tous les livres</a>
 </section>
 <section class="background-1 text-center" id="valeurs-home">
-    <img class="img-band" src="Asset/img/bande.png" alt="">
+    <img class="img-band hidden-mob" src="Asset/img/bande.png" alt="">
+    <img class="img-band hidden-desk" src="Asset/img/val_illu.png" alt="">
     <div>
         <h2>Nos valeurs</h2>
         <p>Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté. Nos valeurs sont ancrées dans notre passion pour les livres et notre désir de créer des liens entre les lecteurs. Nous croyons en la puissance des histoires pour rassembler les gens et inspirer des conversations enrichissantes.</p>
