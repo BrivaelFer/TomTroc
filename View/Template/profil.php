@@ -1,6 +1,6 @@
 <section id="user-profil">
     <div class="background-3 card profil-info">
-        <div class="bottom-separator" style="max-width:242px;">
+        <div style="max-width:242px;">
             <img class="full-profil-img" src="<?= $user->getUsrImg() ?? 'Asset/img/user/user-default.jpg' ?>" alt="">
             <p id="img_modif_show">modifier</p>
             <form id="img_form" class="hidded" action="index.php?page=editImg" method="post" enctype="multipart/form-data">
@@ -9,6 +9,7 @@
                 <input type="submit" value="valider">
             </form>
         </div>
+        <div class="bottom-separator" style="max-width:242px; width: 100%;"></div>
         <div>
             <div>
                 <h3 class="big-title"><?= $user->getName() ?></h3>
@@ -19,10 +20,10 @@
                 <span class="book-count"><i class="book-icon"></i><?= count($books) ?> livres</span>
             </div>
         </div>
-        <a class="button" href="index.php?page=message">Écrire un message</a>
+        <a class="button button-full" href="index.php?page=message">Écrire un message</a>
     </div>
-    <div class="user-books-list background-3 card">
-        <table>
+    <div class="user-books-list background-3-desk card-desk">
+        <table class="hidden-mob">
             <thead class="text-left bottom-separator">
                 <tr>
                     <th>PHOTO</th>
@@ -40,12 +41,35 @@
                     <td><img src="<?= $book->getImg() ?? "Asset/img/default.png" ?>" alt=""></td>
                     <td><?= $book->getTitle() ?></td>
                     <td><?= $book->getAuthor() ?></td>
-                    <td><?= substr($book->getSummary(), 0, 100) . '...' ?></td>
+                    <td class="text-left"><?= substr($book->getSummary(), 0, 100) . '...' ?></td>
                 </tr>
                 <?php
             }
             ?>
             </tbody>
         </table>
+        <div class="books-list-mob hidden-desk">
+            <?php
+            foreach($books as $book)
+            {
+                ?>
+                <div class="card background-3">
+                    <div class="book-main-info-mob">
+                        <img src="<?= $book->getImg() ?? "Asset/img/default.png" ?>" alt="">
+                        <div>
+                            <div>
+                                <span><?= $book->getTitle() ?></span>
+                                <span><?= $book->getAuthor() ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><?= substr($book->getSummary(), 0, 100) . '...' ?></p>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
     </div>
 </section>

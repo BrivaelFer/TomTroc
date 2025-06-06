@@ -1,13 +1,13 @@
 <section class="background-1" id="messageri">
     <div class="background-2" id="messageri-users">
-        <h2>Messageri</h2>
+        <h2>Messagerie</h2>
         <?php 
             foreach ($messagesUsers as $key => $values) {
                 $otherUser = $values['user'];
                 $timeLastMessage = $values['time'] ?? 'N/A';
                 $lastMessage = $values['lmContent'] ?? 'N/A';
                 ?>
-                <div class="messageri-user <?= ($selected == $key) ? 'background-3': '' ?>"  user-id="<?= $otherUser->getId() ?>">
+                <div class="messageri-user <?= ($selected == $key) ? 'background-3-desk': '' ?>"  user-id="<?= $otherUser->getId() ?>">
                     <img class="medium-profil-img" src="<?= $otherUser->getUsrImg() ?? 'Asset/img/user/user-default.jpg' ?>" alt="">
                     <div>
                         <div>
@@ -21,7 +21,10 @@
             }
         ?>
     </div>
-    <div id="messages">
+    <div id="messages" class="hidden-mob">
+        <div class="message-retour hidden-desk">
+            <span class="link-block"><img class="arrow-left" src="Asset/img/fleche.png" alt="">retour</span>
+        </div>
         <?php 
             foreach ($messagesUsers as $key => $values) {
                 $otherUser = $values['user'];
@@ -42,8 +45,10 @@
                                 $out = ($user->getId() != $message->getWriterId());
                                 ?>
                                 <div class="message<?= ($out)? '-left': '-right' ?>">
-                                    <?= ($out)? '<img class="little-profil-img" src="'. ($otherUser->getUsrImg() ?? 'Asset/img/user/user-default.jpg') . '" alt="">': '' ?>
-                                    <p class="message-time color-gray"><?= $mTime ?></p>
+                                        <div class="message-date">
+                                            <?= ($out)? '<img class="little-profil-img" src="'. ($otherUser->getUsrImg() ?? 'Asset/img/user/user-default.jpg') . '" alt="">': '' ?>
+                                            <span class="message-time color-gray"><?= $mTime ?></span>
+                                        </div>
                                     <p class="message-content"><?= $message->getContent() ?></p>
                                 </div>
                                 <?php
@@ -63,28 +68,3 @@
         ?>
     </div>
 </section>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const userItems = document.querySelectorAll('.messageri-user');
-    const messageBlocks = document.querySelectorAll('#messages > div');
-
-    userItems.forEach(item => {
-        item.addEventListener('click', function () {
-            const selectedUserId = this.getAttribute('user-id');
-
-            // Changer le fond du bloc sélectionné
-            userItems.forEach(el => el.classList.remove('background-3'));
-            this.classList.add('background-3');
-
-            // Afficher les messages correspondants
-            messageBlocks.forEach(block => {
-                if (block.getAttribute('user-id') === selectedUserId) {
-                    block.classList.remove('hidded');
-                } else {
-                    block.classList.add('hidded');
-                }
-            });
-        });
-    });
-});
-</script>

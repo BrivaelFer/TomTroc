@@ -84,9 +84,13 @@ class UserController
 
             $veiw = new View('Compte');
             $veiw->render(TEMPLATE_VIEW_PATH . 'account.php', [
-                'books' => $usrBooks,
-                'user' => $user
-            ]);
+                    'books' => $usrBooks,
+                    'user' => $user
+                ],
+                [
+                    'js' => ['account']
+                ]
+            );
         }
         else Tools::redirect('loginPage', ['cible' => 'account']);
     }
@@ -224,10 +228,15 @@ class UserController
 
             $view = new View('Messageri');
             $view->render(TEMPLATE_VIEW_PATH . 'message.php', [
-                'user' => $user,
-                'messagesUsers' => $messagesUsers,
-                'selected' => $id
-            ]);
+                    'user' => $user,
+                    'messagesUsers' => $messagesUsers,
+                    'selected' => $id
+                ],
+                [
+                    'css' => ['message'],
+                    'js' => ['message']
+                ]
+            );
         }
         else
         {

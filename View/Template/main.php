@@ -14,6 +14,12 @@ if ($user) $user = unserialize($user);
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
     <link rel="stylesheet" href="./Asset/css/main.css">
+    <?php 
+        foreach($css as $balise)
+        {
+            echo $balise;
+        }
+    ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
@@ -26,11 +32,12 @@ if ($user) $user = unserialize($user);
             <div class="menu-icon hidden-desk">
                 <img src="Asset/img/icon_menu.svg" alt="menu">
             </div>
-            <div class="main-menus hidden-mob">
+            <div class="main-menus background-1 hidden-mob">
                 <div class="princ-menu">
                     <div><a href="index.php"><span>Accueil</span></a></div>
                     <div><a href="index.php?page=books"><span>Nos livres à l'échange</span></a></div>
                 </div>
+                <div class="right-separator"></div>
                 <div class="account-menu">
                 <?php
                 if($user){
@@ -61,5 +68,11 @@ if ($user) $user = unserialize($user);
         <img class="logo-footer" src="./Asset/img/logoTomTrocRev.png" alt="logo Tom Troc reverse">
     </footer>
 </body>
-<script src="Asset/js/account.js"></script>
+<script src="Asset/js/menus.js"></script>
+<?php 
+    foreach($js as $balise)
+    {
+        echo $balise;
+    }
+?>
 </html>

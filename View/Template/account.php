@@ -1,7 +1,7 @@
-<h2 class="margin-account">Mon compte</h2>
-<section id="user-infos" class="margin-account">
+<h2 class="account-title">Mon compte</h2>
+<section id="user-infos">
     <div class="background-3 card">
-        <div class="bottom-separator" style="max-width:242px;">
+        <div style="max-width:242px;">
             <img class="full-profil-img" src="<?= $user->getUsrImg() ?? 'Asset/img/user/user-default.jpg' ?>" alt="">
             <p id="img_modif_show" class="color-gray">modifier</p>
             <form id="img_form" class="hidded" action="index.php?page=editImg" method="post" enctype="multipart/form-data">
@@ -9,7 +9,8 @@
                 <input type="file" name="user_img" id="user_img" accept="image/*" required>
                 <input type="submit" value="valider">
             </form>
-        </div>
+        </div >
+        <div class="bottom-separator" style="max-width:242px; width: 100%;"></div>
         <div>
             <div>
                 <h3 class="big-title"><?= $user->getName() ?></h3>
@@ -36,12 +37,12 @@
                 <label for="name">Pseudo</label>
                 <input type="text" name="name" id="name" value="<?= $user->getName()?>"S>
             </div>
-            <input class="button" type="submit" value="Enregistrer">
+            <input class="button full-mob" style="--button-size: 150px" type="submit" value="Enregistrer">
         </form>
     </div>
 </section>
-<section class="user-books-list background-3 card margin-account">
-    <table>
+<section class="user-books-list background-3-desk card-desk">
+    <table class="hidden-mob">
         <thead class="text-left bottom-separator">
             <tr>
                 <th>PHOTO</th>
@@ -86,4 +87,43 @@
         ?>
         </tbody>
     </table>
+    <div class="books-list-mob hidden-desk">
+        <?php
+        foreach($books as $book)
+        {
+            ?>
+            <div class="card background-3">
+                <div class="book-main-info-mob">
+                    <img src="<?= $book->getImg() ?? "Asset/img/default.png" ?>" alt="">
+                    <div>
+                        <div>
+                            <span><?= $book->getTitle() ?></span>
+                            <span><?= $book->getAuthor() ?></span>
+                        </div>
+                        <?php 
+                        if($book->isDispo()) { 
+                            ?>
+                            <span class="book-dis">Disponible</span> 
+                            <?php 
+                        }
+                        else { 
+                            ?>
+                            <span class="book-undis">Indisponible</span> 
+                            <?php 
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div>
+                    <p><?= substr($book->getSummary(), 0, 100) . '...' ?></p>
+                </div>
+                <div class="book-links">
+                    <a class="black_link" href="index.php?page=editBook&book=<?= $book->getId() ?>">Editer</a>
+                    <a class="red_link" href="index.php?page=delBook&book=<?= $book->getId() ?>">Supprimer</a>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 </section>

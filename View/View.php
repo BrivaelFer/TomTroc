@@ -13,10 +13,20 @@ class View
         $this->title = $title;
     }
     
-    public function render(string $viewPath, array $params = []) : void 
+    public function render(string $viewPath, array $params = [], array $assets = []) : void 
     {
         $content = $this->_renderViewFromTemplate($viewPath, $params);
         $title = $this->title;
+        $js = [];
+        $css = [];
+        foreach($assets['js'] ?? [] as $jsName)
+        {
+            $js[] = $this->jsManager($jsName);
+        }
+        foreach($assets['css'] ?? [] as $cssName)
+        {
+            $css[] = $this->cssManager($cssName);
+        }
         ob_start();
         require(MAIN_VIEW_PATH);
         echo ob_get_clean();
@@ -40,6 +50,14 @@ class View
         } else {
             throw new Exception("La vue '$viewPath' est introuvable.");
         }
+    }
+    private function jsManager(string $name): string
+    {
+        return '<script src="Asset/js/' . $name . '.js"></script>';
+    }
+    private function cssManager(string $name): string
+    {
+        return '<link rel="stylesheet" href="./Asset/css/'. $name .'.css">';
     }
 }
 

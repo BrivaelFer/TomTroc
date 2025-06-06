@@ -4,12 +4,12 @@ $book = $book ?? null;
 
 ?>
 <section id="book-form">
-    <a class="link-block v-marged" href="index?page=account">retour</a>
+    <a class="link-block v-marged" href="index?page=account"><img class="arrow-left" src="Asset/img/fleche.png" alt="">retour</a>
     <h2 class="v-marged">Modifier les informations</h2>
-    <div class="background-3 card flex-dir-row flex-align-start flex-col-gap">
+    <div id="book-edit" class="background-3 card">
         <div id="book-form-img" class="form-container">
             <p class="item-start label" style="margin-bottom: 10px;">Photo</p>
-            <img src="<?= $book->getImg() ?? 'Asset/img/default.png' ?>" alt="">
+            <img  src="<?= $book->getImg() ?? 'Asset/img/default.png' ?>" alt="">
             <form id="img_form" class="hidded" action="index.php?page=editImg" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="type" id="type" value="book">
                 <input type="hidden" name="bookId" id="bookId" value="<?= $book->getId() ?>">
@@ -39,7 +39,7 @@ $book = $book ?? null;
                         <option value="false" <?= !$book->isDispo() ? 'selected': '' ?>>Indisponible</option>
                     </select>
                 </div>
-                <input class="button-green" type="submit" value="Valider">
+                <input class="button-green full-mob" type="submit" value="Valider">
             </form>
         </div>
     </div>
