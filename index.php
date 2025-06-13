@@ -5,7 +5,7 @@ require_once 'config/autoload.php';
 
 $page = Tools::request('page', 'home');
 
-// try {
+try {
     switch($page)
     {
         case 'home':
@@ -78,7 +78,7 @@ $page = Tools::request('page', 'home');
         default;
             throw new Exception("La page demandée n'existe pas.", 404);
     }
-// } catch (Exception $e) {
-//     $errorView = new View('Erreur');
-//     $errorView->render('errorPage', ['errorMessage' => $e->getMessage(), 'code' => $e->getCode()]);
-// }
+} catch (Exception $e) {
+    $errorView = new View('Erreur');
+    $errorView->render(TEMPLATE_VIEW_PATH . 'error.php', ['errorMessage' => $e->getMessage(), 'code' => $e->getCode()]);
+}

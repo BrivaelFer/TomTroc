@@ -18,9 +18,13 @@ class BookController
                 $user = $userRepo->findUserById($book->getUsrId());
                 $view = new View('Détails livre');
                 $view->render(TEMPLATE_VIEW_PATH . 'bookDetails.php', [
-                    'user' => $user,
-                    'book' => $book
-                ]);
+                        'user' => $user,
+                        'book' => $book
+                    ],
+                    [
+                        'css' => ['bookDetails']
+                    ]
+                );
             }
             else Tools::redirect('ourBooks');
         }
@@ -81,9 +85,13 @@ class BookController
                 {
                     $view = new View('Editer livre');
                     $view->render(TEMPLATE_VIEW_PATH . 'editBookPage.php', [
-                        'user' => $user,
-                        'book' => $book
-                    ]);
+                            'user' => $user,
+                            'book' => $book
+                        ],
+                        [
+                            'css' => ['editBook']
+                        ]
+                    );
                 }
             }
             else {

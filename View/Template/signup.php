@@ -11,11 +11,11 @@
                 <input type="text" name="email" id="email" required>
             </div>
             <div class="input-container">
-                <label for="password">Mot de passe</label>
+                <label for="pw">Mot de passe</label>
                 <input type="password" name="password" id="pw" required>
             </div>
             <input class="button-green button-full" type="submit" value="S'inscrire">
-            <p>Déjà inscrire ? <a href="index.php?page=loginPage<?= $cible ? '&cible='.$cible:'' ?>">Connectez-vous</a></p>
+            <p>Déjà inscrire ? <a href="index.php?page=loginPage">Connectez-vous</a></p>
         </form>
         <div>
             <img src="./Asset/img/illu1.png" alt="">

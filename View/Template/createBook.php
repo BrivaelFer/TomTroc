@@ -23,11 +23,11 @@ $book = $book ?? null;
                     <input type="text" name="author" id="author"  placeholder=" " required>
                 </div>
                 <div class="input-container">
-                    <label for="">Description</label>
+                    <label for="summary">Description</label>
                     <textarea name="summary" id="summary" placeholder=" " required></textarea>
                 </div>
                 <div class="input-container">
-                    <label for="">Disponibilité</label>
+                    <label for="dispo">Disponibilité</label>
                     <select name="dispo" id="dispo">
                         <option value="true" >Disponible</option>
                         <option value="false" selected>Indisponible</option>

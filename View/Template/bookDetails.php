@@ -10,7 +10,7 @@
                     <h2 class="no-top-margin"><?= $book->getTitle() ?></h2>
                     <p class="color-gray">Par: <?= $book->getAuthor() ?></p>
                 </div>
-                <div style="width:20px;" class="bottom-separator gray-border"></div>
+                <div class="bottom-separator detail-separator gray-border"></div>
                 <div>
                     <h3>DESCRIPTION</h3>
                     <p><?= $book->getSummary() ?></p>

@@ -1,0 +1,36 @@
+.books-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.books-container > div {
+    max-width: 924px;
+}
+.books-head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin:70px 0 50px 0;
+}
+.books-head form {
+    width: 322px;
+}
+.books-head h2 {
+    margin: 0;
+}
+@media (min-width: 941px){
+    
+}
+@media (max-width: 940px){
+    .books-head {
+        text-align: left;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    .books-head > * {
+        flex-grow: 1;
+        width: unset;
+        max-width: 350px;
+    }
+}

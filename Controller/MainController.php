@@ -18,9 +18,13 @@ class MainController{
 
         $view = new View('Accueil');
         $view->render(TEMPLATE_VIEW_PATH . 'homePage.php', [
-            'books' => $books,
-            'infos' => $booksInfos
-        ]);
+                'books' => $books,
+                'infos' => $booksInfos
+            ],
+            [
+                'css' => ['home']
+            ]
+        );
     }
     public function ourBooks(): void
     {
@@ -51,8 +55,16 @@ class MainController{
 
         $view = new View("Nos livres");
         $view->render(TEMPLATE_VIEW_PATH . 'ourBooks.php',[
-            'books' => $books,
-            'infos' => $booksInfos
-        ]);
+                'books' => $books,
+                'infos' => $booksInfos
+            ],
+            [
+                'css' => ['ourBooks']
+            ]
+        );
+    }
+    public function error(): void
+    {
+        
     }
 }

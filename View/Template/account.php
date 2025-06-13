@@ -1,7 +1,7 @@
 <h2 class="account-title">Mon compte</h2>
 <section id="user-infos">
     <div class="background-3 card">
-        <div style="max-width:242px;">
+        <div class="user-img">
             <img class="full-profil-img" src="<?= $user->getUsrImg() ?? 'Asset/img/user/user-default.jpg' ?>" alt="">
             <p id="img_modif_show" class="color-gray">modifier</p>
             <form id="img_form" class="hidded" action="index.php?page=editImg" method="post" enctype="multipart/form-data">
@@ -10,7 +10,7 @@
                 <input type="submit" value="valider">
             </form>
         </div >
-        <div class="bottom-separator" style="max-width:242px; width: 100%;"></div>
+        <div class="bottom-separator profil-separator"></div>
         <div>
             <div>
                 <h3 class="big-title"><?= $user->getName() ?></h3>
@@ -30,14 +30,14 @@
                 <input type="text" name="email" id="email" value="<?= $user->getEmail()?>" autocomplete="off">
             </div>
             <div class="input-container">
-                <label for="password">Mot de passe</label>
+                <label for="pw">Mot de passe</label>
                 <input type="password" name="password" id="pw" autocomplete="new-password">
             </div>
             <div class="input-container">
                 <label for="name">Pseudo</label>
-                <input type="text" name="name" id="name" value="<?= $user->getName()?>"S>
+                <input type="text" name="name" id="name" value="<?= $user->getName()?>">
             </div>
-            <input class="button full-mob" style="--button-size: 150px" type="submit" value="Enregistrer">
+            <input class="button full-mob" type="submit" value="Enregistrer">
         </form>
     </div>
 </section>

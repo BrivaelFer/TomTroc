@@ -12,7 +12,7 @@ if ($user) $user = unserialize($user);
     <title><?= $title; ?></title>
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet'>
     <link rel="stylesheet" href="./Asset/css/main.css">
     <?php 
         foreach($css as $balise)
@@ -42,7 +42,7 @@ if ($user) $user = unserialize($user);
                 <?php
                 if($user){
                     ?>
-                        <div><a class="message-link" href="index.php?page=message"><span><i class="message-icon"></i>Messagerie</span></a></div>
+                        <div><a class="message-link" href="index.php?page=message"><span><i class="message-icon"></i>Messagerie</span><span class="message-count"><?= $user->getUnreadMessageCount() ?></span></a></div>
                         <div><a class="account-link" href="index.php?page=account"><span><i class="account-icon"></i>Mon compte</span></a></div>
                         <div><a href="index.php?page=logout"><span>Déconnexion</span></a></div>
                     <?php
@@ -67,12 +67,12 @@ if ($user) $user = unserialize($user);
         <a href="">Tom Troc©</a>
         <img class="logo-footer" src="./Asset/img/logoTomTrocRev.png" alt="logo Tom Troc reverse">
     </footer>
+    <script src="Asset/js/menus.js"></script>
+    <?php 
+        foreach($js as $balise)
+        {
+            echo $balise;
+        }
+    ?>
 </body>
-<script src="Asset/js/menus.js"></script>
-<?php 
-    foreach($js as $balise)
-    {
-        echo $balise;
-    }
-?>
 </html>

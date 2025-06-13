@@ -1,3 +1,6 @@
+@media (min-width: 941px){
+
+}
 @media (max-width: 940px){
     body {
         height: 100lvh;
@@ -52,4 +55,97 @@
 }
 h2 {
     margin: 25px;
+}
+#messageri {
+    display: flex;
+    justify-content: center;
+}
+#messageri-users {
+    width: 308px;
+}
+.messageri-user {
+    width: 278px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 15px;
+    column-gap: 15px;
+    overflow: hidden;
+}
+.messageri-user > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-grow: 1;
+    overflow: hidden;
+}
+.messageri-user > div > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.last-message {
+    overflow: hidden;
+    width: 100%;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+}
+.message-date {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+#messages {
+    flex-grow: 1;
+    max-width: 832px;
+    margin: 25px;
+}
+
+.message-form {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+}
+.message-form .input-container {
+    flex-grow: 1;
+}
+.message-form .button-green {
+    width: 132px;
+}
+.messages-user {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.messages-list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.message-content {
+    border-radius: 3px;
+    padding: 10px 15px;
+}
+.message-left {
+    margin-right: 50px;
+    align-self: start;
+}
+.message-right {
+    margin-left: 50px;
+    align-self: end;
+}
+.message-right > .message-date {
+    justify-content: end;
+}
+.message-left .message-content {
+    background-color: #FFF;
+}
+.message-right .message-content {
+    background-color: var(--table-blue);
+}
+.message-right .message-time {
+    text-align: right;
 }

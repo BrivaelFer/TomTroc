@@ -7,7 +7,7 @@
                 $timeLastMessage = $values['time'] ?? 'N/A';
                 $lastMessage = $values['lmContent'] ?? 'N/A';
                 ?>
-                <div class="messageri-user <?= ($selected == $key) ? 'background-3-desk': '' ?>"  user-id="<?= $otherUser->getId() ?>">
+                <div class="messageri-user <?= ($selected == $key) ? 'background-3-desk': '' ?>"  data-user-id="<?= $otherUser->getId() ?>">
                     <img class="medium-profil-img" src="<?= $otherUser->getUsrImg() ?? 'Asset/img/user/user-default.jpg' ?>" alt="">
                     <div>
                         <div>
@@ -31,7 +31,7 @@
                 $img = $otherUser->getUsrImg()?? "Asset/img/user/user-default.jpg"; 
                 $messages = $values['messages'];
                 ?>
-                <div class="messages-user <?= ($selected == $key)? '': 'hidded'?>"  user-id="<?= $otherUser->getId() ?>">
+                <div class="messages-user <?= ($selected == $key)? '': 'hidded'?>"  data-user-id="<?= $otherUser->getId() ?>">
 
                     <div class="user-i background-1">
                         <img class="medium-profil-img" src="<?= $otherUser->getUsrImg() ?? 'Asset/img/user/user-default.jpg' ?>" alt="">
@@ -57,7 +57,7 @@
                     </div>
                     <form class="message-form" action="index.php?page=addMessage&id=<?= $otherUser->getId() ?>" method="post">
                         <div class="input-container">
-                            <input type="text" id="message" name="message">
+                            <input title="envoie" type="text" name="message">
                         </div>
                         <input class="button-green" type="submit" value="Envoyer">
                     </form>

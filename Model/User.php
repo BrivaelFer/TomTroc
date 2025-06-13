@@ -72,4 +72,9 @@ final class User extends AbstractEntity
             return "aujourd'hui";
         }
     }
+    public function getUnreadMessageCount(): int
+    {
+        $messageRepo = new MessageRepository();
+        return $messageRepo->countMessageUnread($this->getId());
+    }
 }

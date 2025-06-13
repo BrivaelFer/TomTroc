@@ -72,12 +72,6 @@ h2 {
     height: 10px;
     margin-right: 5px;
 }
-.black_link {
-    color: #000;
-}
-.red_link {
-    color: var(--red);
-}
 .link-block {
     color: var(--gray-text);
     text-decoration: none;
@@ -97,6 +91,13 @@ h2 {
     align-items: center;
     margin: 0 auto;
 }
+.message-count {
+    background-color: #000;
+    padding: 5px;
+    margin: 0 5px;
+    border-radius: 20px;
+    color: #FFF;
+}
 .sign {
     color: var(--gray-text);
     font-size: 12px;
@@ -113,9 +114,6 @@ h2 {
 }
 .flex-start {
     justify-self: start;
-}
-.flex-end {
-    
 }
 .text-center {
     text-align: center;
@@ -290,26 +288,7 @@ h2 {
 .search-bar input {
     padding-left: 35px;
 }
-.books-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.books-container > div {
-    max-width: 924px;
-}
-.books-head {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin:70px 0 50px 0;
-}
-.books-head form {
-    width: 322px;
-}
-.books-head h2 {
-    margin: 0;
-}
+
 .books-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -317,7 +296,6 @@ h2 {
     margin-bottom: 70px;
 }
 .books-grid > a, .profil-link {
-    all: unset; /* Réinitialise tous les styles par défaut */
     color: inherit; /* hérite de la couleur du parent */
     text-decoration: inherit; /* hérite du soulignement ou non */
 }
@@ -408,48 +386,6 @@ h2 {
     width: 78px;
     height: 78px;
 }
-.books-list-mob {
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-    width: 100%;
-}
-.books-list-mob > .card {
-    display: flex;
-    flex-direction: column;
-    row-gap: 5px;
-    text-align: left;
-}
-.books-list-mob > .card > div {
-    display: flex;
-    flex-direction: row;
-}
-.book-links {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: nowrap;
-    height: 130px;
-}
-.book-links > a {
-    display: inline-block;
-    margin: 10px; 
-}
-.book-dis {
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    background-color: var(--light-green);
-}
-.book-undis {
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    background-color: var(--light-red);
-}
-.account-form > form {
-    margin: auto !important;
-}
 [id$=-home] {
     padding-top: 50px;
     padding-bottom: 50px;
@@ -535,26 +471,7 @@ h2 {
 #img_modif_show {
     text-decoration: underline;
 }
-#user-infos{
-    display: flex;
-    column-gap: 50px;
-    margin: 0 auto;
-    margin-bottom: 50px;
-    padding: 20px;
-    max-width: 1141px;
-    width: calc(100% - 40px);
-    flex-wrap: wrap;
-    row-gap: 30px;
-}
-#user-infos > div {
-    width: calc(50% - 125px);
-}
-.account-title {
-    padding: 20px;
-    max-width: 1141px;
-    width: calc(100% - 40px);
-    margin: 50px auto;
-}
+
 #book-form-img {
     max-width: 488px;
     --form-cont-img-width: 100%;
@@ -563,118 +480,8 @@ h2 {
     margin: 0;
     width: 435px;
 }
-#book-edit {
-    display: flex;
-    column-gap: 20px;
-    flex-direction: row;
-    align-items: start;
-}
 .v-marged {
     margin: 25px auto  !important;
-}
-
-#messageri {
-    display: flex;
-    justify-content: center;
-}
-#messageri-users {
-    width: 308px;
-}
-.messageri-user {
-    width: 278px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: nowrap;
-    padding: 15px;
-    column-gap: 15px;
-    overflow: hidden;
-}
-.messageri-user > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    flex-grow: 1;
-    overflow: hidden;
-}
-.messageri-user > div > div {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-.last-message {
-    overflow: hidden;
-    width: 100%;
-    text-wrap: nowrap;
-    text-overflow: ellipsis;
-}
-.message-date {
-    display: flex;
-    align-items: center;
-    column-gap: 10px;
-}
-
-#messages {
-    flex-grow: 1;
-    max-width: 832px;
-    margin: 25px;
-}
-
-.message-form {
-    display: flex;
-    column-gap: 15px;
-    align-items: center;
-}
-.message-form .input-container {
-    flex-grow: 1;
-}
-.message-form .button-green {
-    width: 132px;
-}
-.messages-user {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-.messages-list {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-}
-.message-content {
-    border-radius: 3px;
-    padding: 10px 15px;
-}
-.message-left {
-    margin-right: 50px;
-    align-self: start;
-}
-.message-right {
-    margin-left: 50px;
-    align-self: end;
-}
-.message-right > .message-date {
-    justify-content: end;
-}
-.message-left .message-content {
-    background-color: #FFF;
-}
-.message-right .message-content {
-    background-color: var(--table-blue);
-}
-.message-right .message-time {
-    text-align: right;
-}
-#details-book {
-    padding: 0;
-    padding-top: 0.01px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#details-book > p {
-    color: var(--gray-text);
 }
 .path-container {
     padding: 0 15px;
@@ -685,23 +492,6 @@ h2 {
     all: unset; /* Réinitialise tous les styles par défaut */
     color: inherit; /* hérite de la couleur du parent */
     text-decoration: inherit; /* hérite du soulignement ou non */
-}
-#details-book > .background-2 {
-    flex-grow: 1;
-    width: 100%;
-    display: flex;
-}
-#details-book > .background-2 > * {
-    width: 50%;
-}
-.infos-book {
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.infos-book > * {
-    max-width: 485px;
 }
 .no-top-margin {
     margin-top: 0px;
@@ -754,26 +544,6 @@ h2 {
     padding-right: 20px;
     border-radius: 29px;
     column-gap: 20px;
-}
-
-#user-profil {
-    max-width: 1141px;
-    width: calc(100% - 40px);
-    padding: 20px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    column-gap: 20px;
-}
-#user-profil > div {
-    flex-grow: 1;
-}
-.profil-info {
-    max-width: 341px;
-    height: 579px;
-}
-#user-profil > .user-books-list {
-    max-width: 771px;
 }
 .path-nav {
     width: 1140px;
@@ -917,33 +687,6 @@ h2 {
     #intro-home img {
         width: 100lvw;
     }
-    .books-head {
-        text-align: left;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    }
-    .books-head > * {
-        flex-grow: 1;
-        width: unset;
-        max-width: 350px;
-    }
-    #details-book > div {
-        flex-direction: column;
-    }
-    #details-book > .background-2 > * {
-        width: 100%;
-    }
-    .infos-book {
-        width: calc(100% - 30px) !important;
-        padding: 15px;
-    }
-    .infos-book > div {
-        margin-bottom: 50px;
-    }
-    .infos-book > * {
-        max-width: unset;
-    }
     .form-container {
         flex-direction: column;
     }
@@ -976,51 +719,11 @@ h2 {
     .v-marged {
         margin-left: 5% !important;
     }
-    #book-edit {
-        flex-direction: column;
-        padding-left:  5%;
-        padding-right: 5%;
-        width: 90%;
-    }
+    
     #book-form-text {
         width: 100%;
     }
-    .book-links {
-        height: unset;
-        margin: 0 !important;
-        justify-content: start;
-        gap: 10px;
-    }
-    .book-links > a {
-        margin-left: 0;
-    }
-    .book-main-info-mob {
-        column-gap: 15px;
-    }
-    .book-main-info-mob > img {
-        aspect-ratio: 1 / 1;
-    }
-    .book-main-info-mob > div {
-        display: flex;
-        flex-direction: column;
-        row-gap: 10px;
-    }
     .book-undis, .book-dis {
         width: fit-content;
-    }
-    #user-infos > div {
-        width: calc(100% - 40px);
-        row-gap: 20px;
-    }
-    .account-form {
-        padding: 50px 28px;
-    }
-    .books-list-mob {
-        margin-bottom: 50px;
-    }
-    #user-profil {
-        flex-direction: column;
-        row-gap: 50px;
-        margin-top: 50px;
     }
 }

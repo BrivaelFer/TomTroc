@@ -10,8 +10,9 @@
     define('TEMPLATE_VIEW_PATH', './View/Template/'); // Le chemin vers les templates de vues.
     define('MAIN_VIEW_PATH', TEMPLATE_VIEW_PATH . 'main.php'); // Le chemin vers le template principal.
 
-    define('DB_HOST', 'localhost');
-    define('DB_NAME', 'tomtroc_p6');
-    define('DB_USER', 'root');
-    define('DB_PASS', '');
+    include_once('config/dataBaseConfig.php');//N'est pas dans le repo git
+    define('DB_HOST', $host);
+    define('DB_NAME', $dbName);
+    define('DB_USER', $dbUser);
+    define('DB_PASS', $dbpw);
 

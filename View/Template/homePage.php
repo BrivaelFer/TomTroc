@@ -2,7 +2,7 @@
     <div class="home-text">
         <h2>Rejoignez nos lecteurs passionnés </h2>
         <p >Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
-        <a class="button-green full-mob" style="--button-size: 152px" href="">Découvrir</a>
+        <a class="button-green full-mob button-size-1" href="">Découvrir</a>
     </div>
     <div class="intro-img">
         <img src="Asset/img/illu_intro.jpg" alt="">
@@ -32,7 +32,7 @@
         }
         ?>
     </div>
-    <a class="button-green hidden-mob" style="width: 218px" href="index.php?page=books">Voir tous les livres</a>
+    <a class="button-green hidden-mob button-size-2" href="index.php?page=books">Voir tous les livres</a>
 </section>
 <section class="background-1 text-center" id="mcm-home" >
     <h2>Comment ça marche ?</h2>
@@ -51,7 +51,7 @@
             <p>Proposez un échange et discutez avec d'autres passionnés de lecture.</p>
         </article>
     </div>
-    <a class="button full-mob" style="width: 218px" href="index.php?page=books">Voir tous les livres</a>
+    <a class="button full-mob button-size-2" href="index.php?page=books">Voir tous les livres</a>
 </section>
 <section class="background-1 text-center" id="valeurs-home">
     <img class="img-band hidden-mob" src="Asset/img/bande.png" alt="">

@@ -28,4 +28,22 @@ class MessageRepository extends AbstractRepository
             'content' => $content
         ]);
     }
+    public function updateMessageToRead($readerId):void
+    {
+        $sql = 'UPDATE `message` SET is_read=true WHERE reader_id = :readerId';
+        
+        $query = $this->connection->prepare($sql);
+        $query->execute(['readerId' => $readerId]);
+    }
+    public function countMessageUnread($readerId): int
+    {
+        $sql = 'SELECT COUNT(*) FROM `message` WHERE is_read = false AND reader_id = :readerId';
+
+        $query = $this->connection->prepare($sql);
+        $query->execute(['readerId' => $readerId]);
+
+        $r = $query->fetch()[0];
+        
+        return $r;
+    }
 }

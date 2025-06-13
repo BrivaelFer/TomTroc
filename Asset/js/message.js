@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     userItems.forEach(item => {
         item.addEventListener('click', function () {
-            const selectedUserId = this.getAttribute('user-id');
+            const selectedUserId = this.getAttribute('data-user-id');
 
             // Changer le fond du bloc sélectionné
             userItems.forEach(el => el.classList.remove('background-3-desk'));
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Afficher les messages correspondants
             messageBlocks.forEach(block => {
-                if (block.getAttribute('user-id') === selectedUserId) {
+                if (block.getAttribute('data-user-id') === selectedUserId) {
                     block.classList.remove('hidded');
                 } else {
                     block.classList.add('hidded');

@@ -61,7 +61,7 @@ class UserController
             if ($usr && Tools::comparePassword($pw, $usr->getPassword())) 
             {
                 $_SESSION['user'] = serialize($usr);
-                Tools::redirect($cible ?? 'home');
+                Tools::redirect($cible ?? 'account');
             }
             else
             {
@@ -88,7 +88,8 @@ class UserController
                     'user' => $user
                 ],
                 [
-                    'js' => ['account']
+                    'js' => ['account'],
+                    'css' => ['account', 'profil'],
                 ]
             );
         }
@@ -181,9 +182,13 @@ class UserController
 
                 $veiw = new View('Profil');
                 $veiw->render(TEMPLATE_VIEW_PATH . 'profil.php',[
-                    'user' => $user,
-                    'books' => $books
-                ]);
+                        'user' => $user,
+                        'books' => $books
+                    ],
+                    [
+                        'css' => ['profil']
+                    ]
+                );
             }
             else Tools::redirect('home');
         }
@@ -225,7 +230,7 @@ class UserController
             {
                 $id = array_key_first($messagesUsers);
             }
-
+            $messageRepo->updateMessageToRead($user->getId());
             $view = new View('Messageri');
             $view->render(TEMPLATE_VIEW_PATH . 'message.php', [
                     'user' => $user,
