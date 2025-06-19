@@ -1,35 +1,42 @@
 # TomTroc
-Site d'échange de livres projet de formation OpenClassRoom
+
+Site d'échange de livres, projet de formation OpenClassrooms.
 
 ## Installation
-
-### Prérequis 
+### Prérequis
 
 PHP 8.2
 Base de données MySQL
 
-### Clonage
+## Clonage
 
 Récupérez le projet avec :
-```
-git clone https://github.com/BrivaelFer/TomTroc.git
-```
-### Configuratio BDD
-Créer un ficher `dataBaseConfig.php` dans le dossier `config` et copiez y les code suivant:
+
+Copier
+`git clone https://github.com/BrivaelFer/TomTroc.git`
+
+## Configuration BDD
+
+Créez un fichier `dataBaseConfig.php` dans le dossier `config` et copiez-y le code suivant :
+
+Copier
 ```php
 <?php
 
-$host = ''; //Host
-$dbName = ''; //Base de données
+$host = ''; // Hôte
+$dbName = ''; // Base de données
 $dbUser = ''; // Utilisateur
-$dbpw = ''; // Mots de passe
+$dbpw = ''; // Mot de passe
 ```
-Ajouter les valeur corspondant à vortre base de données.
 
-`script/tomtroc_p6.sql` contien un stript MySql pour la structure de la base de données.
+Ajoutez les valeurs correspondant à votre base de données.
 
-### HTACCESS
+`script/tomtroc_p6.sql` contient un script MySQL pour la structure de la base de données.
 
-Créer un ficher `.htaccess` à la racine du projet avec le code dans `htaccess-config.txt`.
+## HTACCESS
 
-Et configurer si votre projet n'est pas place à la racine du server `RewriteBase /projet`.
+Créez un fichier `.htaccess` à la racine du projet avec le code dans `htaccess-config.txt`.
+
+Et configurez `RewriteBase /projet` si votre projet n'est pas placé à la racine du serveur.
+
+(Si le htaccess n'est pas configuré, l'utilisateur ne sera pas redirigé correctement vers la page d'erreur.)
