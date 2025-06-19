@@ -11,7 +11,7 @@
                     <img class="medium-profil-img" src="<?= $otherUser->getUsrImg() ?? 'Asset/img/user/user-default.jpg' ?>" alt="">
                     <div>
                         <div>
-                            <span><?= $otherUser->getName() ?></span>
+                            <span><?= Tools::xssClean($otherUser->getName()) ?></span>
                             <span><?= $timeLastMessage ?></span>
                         </div>
                         <span class="color-gray last-message"><?= $lastMessage ?></span>
@@ -35,7 +35,7 @@
 
                     <div class="user-i background-1">
                         <img class="medium-profil-img" src="<?= $otherUser->getUsrImg() ?? 'Asset/img/user/user-default.jpg' ?>" alt="">
-                        <h3><?= $otherUser->getName() ?></h3>
+                        <h3><?= Tools::xssClean($otherUser->getName()) ?></h3>
                     </div>
                     <div class="messages-list">
                         <?php
@@ -49,7 +49,7 @@
                                             <?= ($out)? '<img class="little-profil-img" src="'. ($otherUser->getUsrImg() ?? 'Asset/img/user/user-default.jpg') . '" alt="">': '' ?>
                                             <span class="message-time color-gray"><?= $mTime ?></span>
                                         </div>
-                                    <p class="message-content"><?= $message->getContent() ?></p>
+                                    <p class="message-content"><?= Tools::xssClean($message->getContent()) ?></p>
                                 </div>
                                 <?php
                             }

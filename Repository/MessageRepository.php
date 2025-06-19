@@ -17,15 +17,15 @@ class MessageRepository extends AbstractRepository
         return $messages;
     }
 
-    public function insertMessage($writerId, $readerId, $content): void
+    public function insertMessage(Message $message): void
     {
         $sql = 'INSERT INTO `message` (writer_id, reader_id, `content`) VALUE (:writerId, :readerId, :content)';
         
         $query = $this->connection->prepare($sql);
         $query->execute([
-            'writerId' => $writerId,
-            'readerId' => $readerId,
-            'content' => $content
+            'writerId' => $message->getWriterId(),
+            'readerId' => $message->getReaderId(),
+            'content' => $message->getContent()
         ]);
     }
     public function updateMessageToRead($readerId):void

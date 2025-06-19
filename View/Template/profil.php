@@ -12,7 +12,7 @@
         <div class="bottom-separator profil-separator"></div>
         <div>
             <div>
-                <h3 class="big-title"><?= $user->getName() ?></h3>
+                <h3 class="big-title"><?= Tools::xssClean($user->getName()) ?></h3>
                 <p class="color-gray">Membre depuis <?= $user->getAccountAge() ?></p>
             </div>
             <div>
@@ -39,8 +39,8 @@
                 ?>
                 <tr>
                     <td><img src="<?= $book->getImg() ?? "Asset/img/default.png" ?>" alt=""></td>
-                    <td><a class="link-block black_link" href="index.php?page=bookDetail&book=<?= $book->getId() ?>"><?= $book->getTitle() ?></a></td>
-                    <td><?= $book->getAuthor() ?></td>
+                    <td><a class="link-block black_link" href="index.php?page=bookDetail&book=<?= $book->getId() ?>"><?= Tools::xssClean($book->getTitle()) ?></a></td>
+                    <td><?= Tools::xssClean($book->getAuthor()) ?></td>
                     <td class="text-left"><?= substr($book->getSummary(), 0, 100) . '...' ?></td>
                 </tr>
                 <?php
@@ -58,8 +58,8 @@
                         <img src="<?= $book->getImg() ?? "Asset/img/default.png" ?>" alt="">
                         <div>
                             <div>
-                                <span><?= $book->getTitle() ?></span>
-                                <span><?= $book->getAuthor() ?></span>
+                                <span><?= Tools::xssClean($book->getTitle()) ?></span>
+                                <span><?= Tools::xssClean($book->getAuthor()) ?></span>
                             </div>
                         </div>
                     </div>

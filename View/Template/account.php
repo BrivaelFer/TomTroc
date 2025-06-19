@@ -13,7 +13,7 @@
         <div class="bottom-separator profil-separator"></div>
         <div>
             <div>
-                <h3 class="big-title"><?= $user->getName() ?></h3>
+                <h3 class="big-title"><?= Tools::xssClean($user->getName()) ?></h3>
                 <p class="color-gray">Membre depuis <?= $user->getAccountAge() ?></p>
             </div>
             <div>
@@ -35,7 +35,7 @@
             </div>
             <div class="input-container">
                 <label for="name">Pseudo</label>
-                <input type="text" name="name" id="name" value="<?= $user->getName()?>">
+                <input type="text" name="name" id="name" value="<?= Tools::xssClean($user->getName())?>">
             </div>
             <input class="button full-mob" type="submit" value="Enregistrer">
         </form>
@@ -60,8 +60,8 @@
             ?>
             <tr>
                 <td><img src="<?= $book->getImg() ?? "Asset/img/default.png" ?>" alt=""></td>
-                <td><?= $book->getTitle() ?></td>
-                <td><?= $book->getAuthor() ?></td>
+                <td><?= Tools::xssClean($book->getTitle()) ?></td>
+                <td><?= Tools::xssClean($book->getAuthor()) ?></td>
                 <td><?= substr($book->getSummary(), 0, 100) . '...' ?></td>
                 <td>
                     <?php 
@@ -97,8 +97,8 @@
                     <img src="<?= $book->getImg() ?? "Asset/img/default.png" ?>" alt="">
                     <div>
                         <div>
-                            <span><?= $book->getTitle() ?></span>
-                            <span><?= $book->getAuthor() ?></span>
+                            <span><?= Tools::xssClean($book->getTitle()) ?></span>
+                            <span><?= Tools::xssClean($book->getAuthor()) ?></span>
                         </div>
                         <?php 
                         if($book->isDispo()) { 

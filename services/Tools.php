@@ -38,4 +38,17 @@ final class Tools
             return false;
         }
     }
+    public static function xssClean(string $str): string
+    {
+        // Utilise htmlspecialchars pour convertir les caractères spéciaux en entités HTML
+        return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+    }
+    public static function removeTags(string &$str): void
+    {
+        $str = filter_var($str, FILTER_SANITIZE_STRING);
+    }
+    public static function emailValidation(string $str): bool 
+    {
+        return preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/",$str);
+    }
 }

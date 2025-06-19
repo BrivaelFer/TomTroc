@@ -22,11 +22,11 @@ $book = $book ?? null;
             <form id="book-form-text" action="<?= $book ? 'index.php?page=editBook&book='. $book->getId():'index.php?page=createBook' ?>" method="post">
                 <div class="input-container">
                     <label for="title">Titre</label>
-                    <input type="text" name="title" id="title" value="<?= $book->getTitle() ?>" placeholder=" ">
+                    <input type="text" name="title" id="title" value="<?= Tools::xssClean($book->getTitle()) ?>" placeholder=" ">
                 </div>
                 <div class="input-container">
                     <label for="author">Auteur</label>
-                    <input type="text" name="author" id="author" value="<?= $book->getAuthor() ?>" placeholder=" ">
+                    <input type="text" name="author" id="author" value="<?= Tools::xssClean($book->getAuthor()) ?>" placeholder=" ">
                 </div>
                 <div class="input-container">
                     <label for="summary">Description</label>

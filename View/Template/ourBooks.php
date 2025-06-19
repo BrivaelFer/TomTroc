@@ -18,10 +18,10 @@
                     <img src="<?= $book->getImg()?? "Asset/img/default.png" ?>" alt="">
                     <div class="book-info">
                         <div>
-                            <h3><?= $book->getTitle()?></h3>
-                            <span><?= $book->getAuthor() ?></span>
+                            <h3><?= Tools::xssClean($book->getTitle())?></h3>
+                            <span><?= Tools::xssClean($book->getAuthor()) ?></span>
                         </div>
-                        <span>Vendu par:<?= $infos[$book->getId()]['user']->getName() ?></span>
+                        <span>Vendu par:<?= Tools::xssClean($infos[$book->getId()]['user']->getName()) ?></span>
                     </div>
                 </article>
             </a>

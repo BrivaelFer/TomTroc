@@ -37,6 +37,7 @@ final class Book extends AbstractEntity
     
     public function setSummary(string $summary): void 
     {
+        Tools::removeTags($summary);
         $this->summary = $summary;
     }
     

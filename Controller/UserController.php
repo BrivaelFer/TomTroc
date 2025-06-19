@@ -22,7 +22,7 @@ class UserController
 
         if(
             $_POST['name'] != '' && 
-            preg_match("/^[^@]+@[^@]+\.[^@]+$/",$_POST['email']) && 
+            Tools::emailValidation($_POST['email']) && 
             $_POST['password'] != ''
         )
         {
@@ -104,7 +104,8 @@ class UserController
 
             $name = $_POST['name'] ?? null;
             $pw = $_POST['password'] ?? null;
-            $email = $_POST['email'] ?? null;
+            $email = Tools::emailValidation($_POST['email']) ? $_POST['email']: null;
+
 
             if(!empty(trim($name))) $user->setName($name);
             if(!empty(trim($email))) $user->setEmail($email);
@@ -269,7 +270,12 @@ class UserController
                 $reader = $userRepo->findUserById($id);
 
                 $messageRepo = new MessageRepository();
-                $messageRepo->insertMessage($user->getId(), $reader->getId(), $content);
+                $message = new Message([
+                    'writerId' => $user->getId(), 
+                    'readerId' =>$reader->getId(), 
+                    'content' =>$content
+                ]);
+                $messageRepo->insertMessage($message);
 
                 Tools::redirect('message', ['id' => $id]);
             }
