@@ -1,3 +1,67 @@
+#intro-home {
+    display: flex;
+    justify-content: center;
+    column-gap: 50px;
+}
+#intro-home .home-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#intro-home h2 {
+    margin-top: 0;
+}
+#intro-home .button-green {
+    margin-top: 30px;
+}
+#intro-home img {
+    width: 100%;
+}
+#ourbooks-home, #mcm-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#mcm-home {
+    row-gap: 25px;
+}
+#mcm-home h2 {
+    margin: 0;
+}
+#mcm-home p {
+    width: 400px;
+}
+#mcm-home article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.mcm-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 215px);
+    margin-bottom: 20px;
+}
+#valeurs-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+}
+#valeurs-home > div {
+    max-width: 392px;
+    position: relative;
+    margin-bottom: 50px;
+}
+#valeurs-home > div > * {
+    text-align: left;
+}
+#valeurs-home .sign {
+    margin-top: 50px;
+}
 @media (min-width: 941px){
     .button-size-1 {
         width: 152px;
@@ -5,7 +69,48 @@
     .button-size-2 {
         width: 218px;
     }
+    #intro-home div {
+        width: 404px;
+    }
+    #intro-home .home-text {
+        width: 328px;
+    }
+    .intro-img p{
+        padding-right: 20px;
+    }
+    #valeurs-home > div > img {
+        position: absolute;
+        size: 120px 102px;
+        right: -40px;
+        bottom: -60px;
+    }
 }
 @media (max-width: 940px){
-    
+    #intro-home {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    #intro-home img {
+        width: 100lvw;
+    }
+    #mcm-home article {
+        padding: 20px 0px;
+    }
+    #mcm-home article > p {
+        margin: 14px 20px;
+    }
+    .home-text {
+        padding: 0 15px;
+    }
+    .mcm-grid {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 100%;
+        margin-bottom: 20px;
+        width: 100%;
+        margin: auto;
+    }
+    #valeurs-home > div > img {
+        margin-top: 35px;
+    }
 }

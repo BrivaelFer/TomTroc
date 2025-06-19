@@ -343,113 +343,12 @@ h2 {
 .img-band{
     width: 100lvw;
 }
-.mcm-grid {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(4, 215px);
-    margin-bottom: 20px;
-}
-.user-books-list {
-    overflow: hidden;
-    max-width: 1101px;
-    margin: auto;
-}
-.user-books-list > table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-    
-}
-.user-books-list > table tr {
-    padding: 0 25px;
-}
-.user-books-list > table tr td,
-.user-books-list > table tr th {
-    padding: 10px 20px;
-}
-.user-books-list > table tr td:last-child,
-.user-books-list > table tr th:last-child {
-    padding-right: 20px;
-}
-.user-books-list > table > thead th {
-    margin-left: 10px;
-    font-size: 8px;
-}
-.user-books-list > table > tbody > tr {
-    height: 130px;
-    font-size: 12px;
-}
-.user-books-list > table > tbody > tr:nth-child(even) {
-    background-color: var(--table-blue);
-}
-.user-books-list img {
-    width: 78px;
-    height: 78px;
-}
 [id$=-home] {
     padding-top: 50px;
     padding-bottom: 50px;
 }
 [id$=-home] a {
     display: inline-block;
-}
-#intro-home {
-    display: flex;
-    justify-content: center;
-    column-gap: 50px;
-}
-#intro-home .home-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-#intro-home h2 {
-    margin-top: 0;
-}
-#intro-home .button-green {
-    margin-top: 30px;
-}
-#intro-home img {
-    width: 100%;
-}
-#ourbooks-home, #mcm-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#mcm-home {
-    row-gap: 25px;
-}
-#mcm-home h2 {
-    margin: 0;
-}
-#mcm-home p {
-    width: 400px;
-}
-#mcm-home article {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 14px;
-}
-#valeurs-home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 0;
-}
-#valeurs-home > div {
-    max-width: 392px;
-    position: relative;
-    margin-bottom: 50px;
-}
-#valeurs-home > div > * {
-    text-align: left;
-}
-#valeurs-home .sign {
-    margin-top: 50px;
 }
 #book-form {
     padding: 15px;
@@ -580,27 +479,11 @@ h2 {
     .hidden-desk {
         display: none !important;
     }
-    #intro-home div {
-        width: 404px;
-    }
-    #intro-home .home-text {
-        width: 328px;
-    }
-    #valeurs-home > div > img {
-        position: absolute;
-        size: 120px 102px;
-        right: -40px;
-        bottom: -60px;
-    }
     .form-container > form {
         margin-top: 75px;
     }
     .background-3-desk {
         background-color: #FFFFFF;
-    }
-    .user-books-list {
-        padding: 0;
-        max-width: 1141px;
     }
 }
 @media (max-width: 940px){
@@ -625,17 +508,6 @@ h2 {
         width: 100% !important;
         margin: auto;
     }
-    #valeurs-home > div > img {
-        margin-top: 35px;
-    }
-    .mcm-grid {
-        display: grid;
-        gap: 20px;
-        grid-template-columns: 100%;
-        margin-bottom: 20px;
-        width: 100%;
-        margin: auto;
-    }
     .books-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
@@ -643,16 +515,7 @@ h2 {
     .books-grid article {
         max-width: 160px;
     }
-    #intro-home {
-        flex-direction: column-reverse;
-        align-items: center;
-    }
-    #mcm-home article {
-        padding: 20px 0px;
-    }
-    #mcm-home article > p {
-        margin: 14px 20px;
-    }
+    
     [id$=-home] {
         padding-top: 25px;
         padding-bottom: 25px;
@@ -677,15 +540,6 @@ h2 {
         height: 185px;
         min-height: 185px;
         row-gap: 20px;
-    }
-    .home-text {
-        padding: 0 15px;
-    }
-    .intro-img p{
-        padding-right: 20px;
-    }
-    #intro-home img {
-        width: 100lvw;
     }
     .form-container {
         flex-direction: column;

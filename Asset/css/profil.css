@@ -43,6 +43,43 @@
 .user-img {
     max-width:242px;
 }
+.user-books-list {
+    overflow: hidden;
+    max-width: 1101px;
+    margin: auto;
+}
+.user-books-list > table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    
+}
+.user-books-list > table tr {
+    padding: 0 25px;
+}
+.user-books-list > table tr td,
+.user-books-list > table tr th {
+    padding: 10px 20px;
+}
+.user-books-list > table tr td:last-child,
+.user-books-list > table tr th:last-child {
+    padding-right: 20px;
+}
+.user-books-list > table > thead th {
+    margin-left: 10px;
+    font-size: 8px;
+}
+.user-books-list > table > tbody > tr {
+    height: 130px;
+    font-size: 12px;
+}
+.user-books-list > table > tbody > tr:nth-child(even) {
+    background-color: var(--table-blue);
+}
+.user-books-list img {
+    width: 78px;
+    height: 78px;
+}
 @media (min-width: 941px){
     
 }
@@ -65,5 +102,9 @@
         flex-direction: column;
         row-gap: 50px;
         margin-top: 50px;
+    }
+    .user-books-list {
+        padding: 0;
+        max-width: 1141px;
     }
 }
