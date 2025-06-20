@@ -182,9 +182,10 @@ h2 {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    font-size: 14px;
 }
 .main-menus > div {
-    flex-grow: 1;
+    flex-grow: 2;
 }
 .main-logo img {
     width: 155px;
@@ -484,6 +485,9 @@ h2 {
     }
     .background-3-desk {
         background-color: #FFFFFF;
+    }
+    .account-menu {
+        flex-grow: 1 !important;
     }
 }
 @media (max-width: 940px){
