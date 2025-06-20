@@ -2,7 +2,7 @@
     <div class="home-text">
         <h2>Rejoignez nos lecteurs passionnés </h2>
         <p >Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
-        <a class="button-green full-mob button-size-1" href="">Découvrir</a>
+        <a class="button-green full-mob button-size-1" href="index.php?page=books">Découvrir</a>
     </div>
     <div class="intro-img">
         <img src="Asset/img/illu_intro.jpg" alt="">
