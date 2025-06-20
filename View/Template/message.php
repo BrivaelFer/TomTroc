@@ -14,7 +14,7 @@
                             <span><?= Tools::xssClean($otherUser->getName()) ?></span>
                             <span><?= $timeLastMessage ?></span>
                         </div>
-                        <span class="color-gray last-message"><?= $lastMessage ?></span>
+                        <span class="color-gray last-message"><?= Tools::xssClean($lastMessage) ?></span>
                     </div>
                 </div>
                 <?php
