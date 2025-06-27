@@ -43,9 +43,13 @@ final class Tools
         // Utilise htmlspecialchars pour convertir les caractères spéciaux en entités HTML
         return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
     }
-    public static function removeTags(string &$str): void
+    // public static function removeTags(string &$str): void
+    // {
+    //     $str = filter_var($str, FILTER_SANITIZE_STRING);
+    // }
+    public static function removeTextarea(string &$str): void
     {
-        $str = filter_var($str, FILTER_SANITIZE_STRING);
+        $str = preg_replace('/<\/?textarea[^>]*>/', '', $str);
     }
     public static function emailValidation(string $str): bool 
     {
