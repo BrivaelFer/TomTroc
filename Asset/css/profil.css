@@ -44,8 +44,9 @@
     max-width:242px;
 }
 .user-books-list {
+    padding: 0;
+    max-width: 1141px;
     overflow: hidden;
-    max-width: 1101px;
     margin: auto;
 }
 .user-books-list > table {
@@ -102,9 +103,5 @@
         flex-direction: column;
         row-gap: 50px;
         margin-top: 50px;
-    }
-    .user-books-list {
-        padding: 0;
-        max-width: 1141px;
     }
 }

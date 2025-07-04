@@ -89,6 +89,10 @@
     #intro-home {
         flex-direction: column-reverse;
         align-items: center;
+        padding-top: 0;
+    }
+    .sign {
+        padding-right: 45px;
     }
     #intro-home img {
         width: 100lvw;
