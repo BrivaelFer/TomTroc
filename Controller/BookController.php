@@ -89,7 +89,8 @@ class BookController
                             'book' => $book
                         ],
                         [
-                            'css' => ['editBook']
+                            'css' => ['editBook'],
+                            'js' => ['account']
                         ]
                     );
                 }

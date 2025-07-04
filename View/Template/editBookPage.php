@@ -4,7 +4,7 @@ $book = $book ?? null;
 
 ?>
 <section id="book-form">
-    <a class="link-block v-marged" href="index?page=account"><img class="arrow-left" src="Asset/img/fleche.png" alt="">retour</a>
+    <a class="link-block v-marged" href="index?page=account.php"><img class="arrow-left" src="Asset/img/fleche.png" alt="">retour</a>
     <h2 class="v-marged">Modifier les informations</h2>
     <div id="book-edit" class="background-3 card">
         <div id="book-form-img" class="form-container">

@@ -1,6 +1,6 @@
 <section class="background-1" id="details-book">
     <div class="path-container">
-        <p class="path-nav color-gray"><a href="index?page=ourBooks">Nos livre</a> > <?= Tools::xssClean($book->getTitle()) ?></p>
+        <p class="path-nav color-gray"><a href="index?page=ourBooks.php">Nos livre</a> > <?= Tools::xssClean($book->getTitle()) ?></p>
     </div>
     <div class="background-2">
         <img src="<?= $book->getImg() ?? 'Asset/img/default.png' ?>" alt="">
