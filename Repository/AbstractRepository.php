@@ -11,7 +11,8 @@ class AbstractRepository
     private function connect(): PDO
     {
         try{
-            $db = new PDO('mysql:host=localhost;dbname=tomtroc_p6;charset=utf8','root','',
+
+            $db = new PDO('mysql:host='.DB_HOST.';dbname='. DB_NAME .';charset=utf8',DB_USER,DB_PASS,
             array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         }catch(\Exception $e){
             die('Erreur: '.$e->getMessage());

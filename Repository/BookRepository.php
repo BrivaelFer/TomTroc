@@ -35,12 +35,15 @@ final class BookRepository extends AbstractRepository
         }
         return $books;
     }
-    public function findBookById(int $id): Book
+    public function findBookById(int $id): ?Book
     {
+        $book = null;
         $sql = "SELECT * FROM book WHERE id = :id";
         $query = $this->connection->prepare($sql);
         $query->execute([':id' => $id]);
-        $book = new Book($query->fetch());
+        $r = $query->fetch();
+        if($r)
+            $book = new Book($r);
         return $book;
     }
     public function findBooksByUser(int $userId): array
@@ -111,9 +114,9 @@ final class BookRepository extends AbstractRepository
             $query->execute($execVals);
         }
     }
-    public function deleteBook($id): void
+    public function deleteBook(int $id): void
     {
-        $sql = "DELETE FROM book WHERE id = $id";
+        $sql = "DELETE FROM book WHERE id = :id";
         $query = $this->connection->prepare($sql);
         $query->execute([':id' => $id]);
     }

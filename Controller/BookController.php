@@ -6,12 +6,12 @@ class BookController
     {
         $id = Tools::request('book', null);
         if(!isset($id)){
-            Tools::redirect('ourBooks');
+            Tools::redirect('books');
         }
         else {
             $bookRepo = new BookRepository();
             $book = $bookRepo->findBookById($id);
-            
+        
             if($book)
             {
                 $userRepo = new UserRepository();
@@ -26,7 +26,8 @@ class BookController
                     ]
                 );
             }
-            else Tools::redirect('ourBooks');
+            else Tools::redirect('error');
+            
         }
     }
     public function createBook(): void
