@@ -2,12 +2,6 @@
     <div class="background-3 card profil-info">
         <div class="user-img">
             <img class="full-profil-img" src="<?= $user->getUsrImg() ?? 'Asset/img/user/user-default.jpg' ?>" alt="">
-            <p id="img_modif_show">modifier</p>
-            <form id="img_form" class="hidded" action="index.php?page=editImg" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="type" id="type" value="user">
-                <input type="file" name="user_img" id="user_img" accept="image/*" required>
-                <input type="submit" value="valider">
-            </form>
         </div>
         <div class="bottom-separator profil-separator"></div>
         <div>
